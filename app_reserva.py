@@ -5,6 +5,16 @@ import pandas as pd
 import os
 import base64
 
+# --- MÁGICA DA NUVEM: Recria as senhas a partir do cofre secreto ---
+if not os.path.exists('token.pickle') and "google" in st.secrets:
+    with open('token.pickle', 'wb') as f:
+        f.write(base64.b64decode(st.secrets["google"]["token_pickle"]))
+
+if not os.path.exists('client_secret.json') and "client_secret" in st.secrets:
+    with open('client_secret.json', 'w') as f:
+        f.write(st.secrets["client_secret"])
+# -------------------------------------------------------------------
+
 # --- CONFIGURAÇÃO DA PÁGINA E ESTILO ---
 st.set_page_config(page_title="Reserva de Salas - Hub Horizonte", layout="centered")
 

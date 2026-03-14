@@ -12,6 +12,16 @@ from gdrive_utils import gerir_pasta_empresa, upload_arquivo
 from pdf_generator import gerar_ata_interna, gerar_plano_cliente
 from gestao_salas import renderizar_gestao_salas
 
+# NUVEM: Recria as senhas a partir do cofre ---
+if not os.path.exists('token.pickle') and "google" in st.secrets:
+    with open('token.pickle', 'wb') as f:
+        f.write(base64.b64decode(st.secrets["google"]["token_pickle"]))
+
+if not os.path.exists('client_secret.json') and "client_secret" in st.secrets:
+    with open('client_secret.json', 'w') as f:
+        f.write(st.secrets["client_secret"])
+# -------------------------------------------------------------------
+
 # --- FUNÇÃO PARA LOGO LOCAL ---
 def get_base64_logo():
     for ext in ["png", "jpg", "jpeg"]:
