@@ -1,7 +1,8 @@
 # Funções para gerar a interface do Streamlit
 import streamlit as st
-from Perguntas import DIAGNOSTICO_CONFIG, ACOLHIMENTO_CONFIG, LISTA_DIRECIONAMENTO, LISTA_DOR_PRINCIPAL, LISTA_SOLUCAO_OFERTADA
+from Perguntas import DIAGNOSTICO_CONFIG, ACOLHIMENTO_CONFIG, LISTA_DIRECIONAMENTO, LISTA_DOR_PRINCIPAL, CATALOGO_MANDALA, CATALOGO_TRILHA
 from Formatacoes import formatar_moeda
+import plotly.graph_objects as go
 
 def renderizar_pergunta(pergunta, key_prefix=""):
     """
@@ -20,7 +21,7 @@ def renderizar_pergunta(pergunta, key_prefix=""):
             label=pergunta["pergunta"],
             options=pergunta["opcoes"],
             key=unique_key,
-            index=None # <-- ADICIONADO AQUI
+            index=None 
         )
     else:
         opcoes_texto = [op["texto"] for op in pergunta["opcoes"]]
@@ -28,7 +29,7 @@ def renderizar_pergunta(pergunta, key_prefix=""):
             label=pergunta["pergunta"],
             options=opcoes_texto,
             key=unique_key,
-            index=None # <-- ADICIONADO AQUI
+            index=None 
         )
     return resposta_selecionada
 
@@ -89,16 +90,16 @@ def calcular_nota_area(respostas_area, area_config):
     if max_pontos == 0: return 0
     return (total_pontos / max_pontos) * 4.0
 
-def renderizar_acolhimento():
+def renderizar_acolhimento(is_pj=True):
     """
     Renderiza o formulário de Acolhimento completo conforme novas solicitações.
     """
-    st.header("Fase de Acolhimento")
+    st.header("Acolhimento")
     
     respostas_acolhimento = {}
     
-    # 2. Mapeamento Inicial
-    st.subheader("2. Mapeamento Inicial")
+    # Mapeamento Inicial
+    st.subheader("1. Mapeamento Inicial")
     
     disponibilidade = st.selectbox(
         "Qual a sua disponibilidade de tempo para se dedicar a ações de inovação e melhoria no seu negócio ou conhecimento?",
@@ -121,7 +122,7 @@ def renderizar_acolhimento():
     st.divider()
     
     # 4. Radar de Demandas
-    st.subheader("4. Radar de Demandas")
+    st.subheader("2. Diagnóstico de Demandas")
     st.write(f"**Introdução ao Diagnóstico:** {ACOLHIMENTO_CONFIG['Radar de Demandas']['intro']}")
     
     radar_data = {}
@@ -134,53 +135,63 @@ def renderizar_acolhimento():
         with st.expander(f"Área: {nome_area}"):
             st.write(f"**Pergunta de Reflexão:** {area['reflexao']}")
             
-            # Resposta do cliente (Aberta)
             resp_cliente = st.text_area(f"Resposta do cliente - {nome_area}", key=f"resp_cli_{nome_area}")
-            
-            # Observações do agente (Aberta)
             obs_agente = st.text_area(f"Observações do agente - {nome_area}", key=f"obs_age_{nome_area}")
             
-            col1, col2 = st.columns(2)
-            with col1:
-                # Escala de Demanda (para empresas)
+            # --- A MÁGICA DA SEPARAÇÃO ACONTECE AQUI ---
+            if is_pj:
                 opcoes_demanda = [op["texto"] for op in escala_demanda]
                 demanda_sel = st.selectbox(
-                    f"Escala de Demanda (para empresas) - {nome_area}", 
+                    f"Escala de Demanda - {nome_area}", 
                     options=opcoes_demanda, 
                     key=f"dem_{nome_area}",
                     index=None,
                     placeholder="Selecione..."
                 )
-                # Valor interno seguro (evita erro se não selecionar nada)
-                val_demanda = next((op["valor"] for op in escala_demanda if op["texto"] == demanda_sel), 0) if demanda_sel else 0
-                
-            with col2:
-                # Escala de Interesse (para pessoas)
+                valor_radar = next((op["valor"] for op in escala_demanda if op["texto"] == demanda_sel), 0) if demanda_sel else 0
+            else:
                 opcoes_interesse = [op["texto"] for op in escala_interesse]
                 interesse_sel = st.selectbox(
-                    f"Escala de Interesse (para pessoas) - {nome_area}", 
+                    f"Escala de Interesse - {nome_area}", 
                     options=opcoes_interesse, 
                     key=f"int_{nome_area}",
                     index=None,
                     placeholder="Selecione..."
                 )
-                # Valor interno seguro
-                val_interesse = next((op["valor"] for op in escala_interesse if op["texto"] == interesse_sel), 0) if interesse_sel else 0
+                valor_radar = next((op["valor"] for op in escala_interesse if op["texto"] == interesse_sel), 0) if interesse_sel else 0
             
             radar_data[nome_area] = {
                 "abreviacao": area["abreviacao"],
                 "resposta_cliente": resp_cliente,
                 "observacoes_agente": obs_agente,
-                "demanda": val_demanda,
-                "interesse": val_interesse
+                "nota_radar": valor_radar, # <--  montar o gráfico!
+                "demanda": valor_radar if is_pj else 0,
+                "interesse": valor_radar if not is_pj else 0
             }
-    
     respostas_acolhimento["radar"] = radar_data
     
+    #   GRÁFICO AO VIVO (Visão do Consultor)
+    st.markdown("#### 3.Visão Geral - Gráfico de Radar ")
+    
+    labels = [radar_data[area]['abreviacao'] for area in radar_data]
+    valores = [radar_data[area]['nota_radar'] for area in radar_data]
+    
+    fig = go.Figure(data=go.Scatterpolar(
+        r=valores + [valores[0]], 
+        theta=labels + [labels[0]], 
+        fill='toself', 
+        fillcolor='rgba(0, 180, 216, 0.25)', 
+        line=dict(color='#121A3B', width=3)
+    ))
+    fig.update_layout(polar=dict(radialaxis=dict(visible=True, range=[0, 5])), showlegend=False)
+    
+    # Desenha o gráfico na tela!
+    st.plotly_chart(fig, use_container_width=True)
     st.divider()
     
     # 5. Alinhamento sobre Investimento
-    st.subheader("5. Alinhamento sobre Investimento")
+    st.subheader("4. Alinhamento sobre Investimento")
+    # ... o código continua normal pra baixo
     disposto_investir = st.radio(
         "Você estaria disposto(a) a fazer investimentos em ferramentas e soluções pagas?",
         options=["Sim", "Não"],
@@ -205,7 +216,7 @@ def renderizar_acolhimento():
     st.divider()
     
     # 6. Fechamento e próximos passos
-    st.subheader("6. Fechamento e próximos passos")
+    st.subheader("5. Fechamento e próximos passos")
     
     st.write("**Resumo e Validação:**")
     st.info("\"Agradeço muito pela sua abertura em compartilhar essas informações. Pelo que percebi, suas principais demandas estão em [Resumir as áreas identificadas]. Isso está alinhado com o que você sente?\"")
@@ -219,32 +230,69 @@ def renderizar_acolhimento():
     )
     respostas_acolhimento["direcionamento"] = direcionamento
     
-    # Instruções baseadas no direcionamento
-    st.write("**Instruções:**")
-    if direcionamento in ["Eventos", "Programas"]:
-        st.success("Eventos e Programas - Direcione para as inscrições e instrua sobre as principais informações")
-    elif direcionamento == "Trilha do Conhecimento":
-        st.success("Trilha do Conhecimento - Apresente a plataforma e instrua sobre seu acesso e funcionamento")
-    elif direcionamento == "Mandala de Soluções":
-        st.success("Mandala de Soluções - Conecte com o parceiro, agendando uma reunião de match para conhecer mais sobre o serviço")
-    elif direcionamento == "Diagnóstico Completo":
-        st.success("Diagnóstico Completo - Direcione/agende com o Consultor do Núcleo de Operações do Horizonte")
-        st.write("**Apresentação da Jornada e Diagnóstico:**")
-        st.info("\"A partir de agora, a sua jornada em nosso projeto será a seguinte: agendaremos um Diagnóstico de Demandas completo, que leva em torno de 60 minutos para ser realizado. Com esse diagnóstico, será possível entender de forma mais clara os principais gargalos na sua operação, para que as soluções do plano de ação se enquadrem à sua realidade. As soluções que iremos propor podem ser da CDL/BH, SEBRAE MG ou de outros parceiros participantes do projeto. Parte dessas soluções são gratuitas, mas algumas podem ter custo adicionado. A partir do plano de ação, vamos te encaminhar para algumas dessas instituições para mais detalhes sobre a solução.\"")
-    elif direcionamento == "Negociação de Nova Parceria":
-        st.success("Novas Parcerias - Direcione para o formulário de manifestação de interesse em ser parceiro e agende uma reunião")
+    if direcionamento:
+        st.write("**Instruções:**")
 
-    col_dor, col_sol = st.columns(2)
-    with col_dor:
-        dor = st.selectbox("Principal Dor identificada:", options=LISTA_DOR_PRINCIPAL, key="acolh_dor_principal", index=None, placeholder="Selecione...")
-        respostas_acolhimento["dor_principal_acolh"] = dor
-    with col_sol:
-        solucao = st.selectbox("Solução Ofertada:", options=LISTA_SOLUCAO_OFERTADA, key="acolh_solucao_ofertada", index=None, placeholder="Selecione...")
-        respostas_acolhimento["solucao_ofertada"] = solucao
+        # 1. EVENTOS E PROGRAMAS
+        if direcionamento == "Eventos e Programas":
+            st.success("Eventos e Programas - Direcione para as inscrições e instrua sobre as principais informações")
+            col_dor, col_sol = st.columns(2)
+            with col_dor:
+                dor = st.selectbox("Principal Dor identificada:", options=LISTA_DOR_PRINCIPAL, key="acolh_dor_principal", index=None)
+            with col_sol:
+                solucao = st.text_input("Solução Ofertada:", key="acolh_solucao_ofertada", placeholder="Ex: Inscrição no evento X")
+            respostas_acolhimento["dor_principal_acolh"] = dor
+            respostas_acolhimento["solucao_ofertada"] = solucao
 
-    st.write("**Agendamento (se for o caso):**")
-    agendamento = st.text_input("\"Vamos agendar o próximo encontro? Tenho a seguinte disponibilidade: [Oferecer opções de data e horário].\"", placeholder="Ex: 20/03 às 14h", key="acolh_agendamento")
-    respostas_acolhimento["agendamento"] = agendamento
+        # 2. MANDALA DE SOLUÇÕES
+        elif direcionamento == "Mandala de Soluções":
+            st.success("Mandala de Soluções - Conecte com o parceiro, agendando uma reunião de match para conhecer mais sobre o serviço")
+            col_dor, col_sol = st.columns(2)
+            with col_dor:
+                dor = st.selectbox("Principal Dor identificada:", options=LISTA_DOR_PRINCIPAL, key="acolh_dor_principal", index=None)
+            with col_sol:
+                solucao = st.selectbox("Solução Ofertada:", options=list(CATALOGO_MANDALA.keys()), key="acolh_solucao_ofertada", index=None)
+            respostas_acolhimento["dor_principal_acolh"] = dor
+            respostas_acolhimento["solucao_ofertada"] = solucao
+
+            if solucao:
+                info = CATALOGO_MANDALA[solucao]
+                st.info(f"**Descrição:** {info['descricao']}\n\n**Instituição:** {info['instituicao']} | **Custo:** {info['custo']}")
+                respostas_acolhimento["solucao_detalhe"] = info
+
+        # 3. TRILHA DO CONHECIMENTO
+        elif direcionamento == "Trilha do Conhecimento":
+            st.success("Trilha do Conhecimento - Apresente a plataforma e instrua sobre seu acesso e funcionamento")
+            col_dor, col_sol = st.columns(2)
+            with col_dor:
+                dor = st.selectbox("Principal Dor identificada:", options=LISTA_DOR_PRINCIPAL, key="acolh_dor_principal", index=None)
+            with col_sol:
+                solucao = st.selectbox("Solução Ofertada:", options=list(CATALOGO_TRILHA.keys()), key="acolh_solucao_ofertada", index=None)
+            respostas_acolhimento["dor_principal_acolh"] = dor
+            respostas_acolhimento["solucao_ofertada"] = solucao
+
+            if solucao:
+                info = CATALOGO_TRILHA[solucao]
+                st.info(f"**Descrição:** {info['descricao']}\n\n**Instituição:** {info['instituicao']} | **Carga Horária:** {info['carga_horaria']} | **Custo:** {info['custo']}\n\n**Link de Acesso:** {info['link']}")
+                respostas_acolhimento["solucao_detalhe"] = info
+
+        # 4. DIAGNÓSTICO COMPLETO
+        elif direcionamento == "Diagnóstico Completo":
+            st.success("Diagnóstico Completo - Direcione/agende com o Consultor do Núcleo de Operações do Horizonte")
+            dor = st.selectbox("Principal Dor identificada:", options=LISTA_DOR_PRINCIPAL, key="acolh_dor_principal", index=None)
+            respostas_acolhimento["dor_principal_acolh"] = dor
+            respostas_acolhimento["solucao_ofertada"] = "Agendado Diagnóstico Completo"
+
+        # 5. NEGOCIAÇÃO DE NOVA PARCERIA
+        elif direcionamento == "Negociação de Nova Parceria":
+            st.success("Novas Parcerias - Direcione para o formulário de manifestação de interesse em ser parceiro e agende uma reunião")
+            dor = st.selectbox("Principal Dor identificada:", options=LISTA_DOR_PRINCIPAL, key="acolh_dor_principal", index=None)
+            respostas_acolhimento["dor_principal_acolh"] = dor
+            respostas_acolhimento["solucao_ofertada"] = "Negociação de Parceria"
+
+        st.write("**Observação / Agendamento:**")
+        agendamento = st.text_input("\" Oferecer opções de data e horário ou fazer anotações sobre os próximos passos.\"", placeholder="Ex: Diagnóstico marcado para 20/03 às 14h", key="acolh_agendamento")
+        respostas_acolhimento["agendamento"] = agendamento
 
     st.write("**Despedida:**")
     st.info("\"Muito obrigado(a) mais uma vez pela conversa! Estamos aqui para te ajudar. Até breve.\"")
@@ -252,7 +300,7 @@ def renderizar_acolhimento():
     st.divider()
     
     # 7. Relatório Final
-    st.subheader("7. Relatório Final: Principais pontos observados no acolhimento")
+    st.subheader("6. Relatório Final: Principais pontos observados no acolhimento")
     relatorio_final = st.text_area("Principais pontos observados no acolhimento (Campo Aberto)", key="acolh_relatorio_final")
     respostas_acolhimento["relatorio_final"] = relatorio_final
         

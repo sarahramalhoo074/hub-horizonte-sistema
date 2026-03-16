@@ -32,17 +32,17 @@ class PDF_Horizonte(FPDF):
         try:
             # Tenta carregar a logo se existir
             if os.path.exists("LogoHorizonte1.png"):
-                self.image("LogoHorizonte1.png", 30, 15, 20)
+                self.image("LogoHorizonte1.png", 30, 8, 32)
             elif os.path.exists("LogoHorizonte1.jpg"):
-                self.image("LogoHorizonte1.jpg", 30, 15, 20)
+                self.image("LogoHorizonte1.jpg", 30, 8, 32)
         except:
             pass
         self.set_font("Arial", "B", 10)
         self.set_y(15)
         # OBRIGATÓRIO USAR CELL: multi_cell no header causa quebra do layout se a página virar
-        self.cell(0, 10, "HUB HORIZONTE - GESTÃO OPERACIONAL", border=0, align="R")
+        self.cell(0, 10, "HUB HORIZONTE", border=0, align="R")
         self.ln(13)
-        self.line(30, 28, 190, 28) # Linha horizontal de separação
+        self.line(30, 32, 190, 32) # Linha horizontal de separação
         self.ln(5)
 
     def footer(self):
@@ -89,6 +89,15 @@ class PDF_Horizonte(FPDF):
         # multi_cell seguro apenas no valor, pois ele pode ter múltiplas linhas
         self.multi_cell(0, 6, limpar_texto(valor))
         self.ln(2)
+    
+    def item_horizontal(self, label, valor):
+        """Imprime o rótulo e o valor na mesma linha para economizar espaço."""
+        self.set_font("Arial", "B", 10)
+        lbl = f"{limpar_texto(label)}: "
+        self.cell(self.get_string_width(lbl), 6, lbl)
+        self.set_font("Arial", "", 10)
+        self.cell(0, 6, limpar_texto(str(valor)), ln=True)
+        self.ln(1)
 
 def gerar_ata_interna(dados, resultados, caminho_radar, nome_arquivo, modo="Diagnóstico Inicial"):
     pdf = PDF_Horizonte()
@@ -102,42 +111,58 @@ def gerar_ata_interna(dados, resultados, caminho_radar, nome_arquivo, modo="Diag
     pdf.cell(0, 10, limpar_texto(f"{titulo_doc} - {empresa.upper()}"), border=0, ln=True, align="C")
     pdf.ln(2)
 
+    # É PJ OU PF?
+    documento = dados.get('cnpj', '')
+    is_pj = '/' in documento
+
     # ======================
-    # 1 DADOS DO NEGÓCIO
+    # 1 DADOS DO NEGÓCIO / CLIENTE
     # ======================
-    pdf.secao("1. DADOS DO NEGÓCIO")
+    titulo_secao_1 = "1. DADOS DO NEGÓCIO" if is_pj else "1. DADOS DO CLIENTE"
+    pdf.secao(titulo_secao_1)
     
-    # Aplicação das duas colunas apenas nos dados principais
+    label_nome = "Empresa" if is_pj else "Nome Responsável"
+    label_doc = "CNPJ" if is_pj else "CPF"
+    
     pdf.item_duas_colunas("Data", dados.get('data',''), "Consultor", dados.get('consultor',''))
-    pdf.item_duas_colunas("Empresa", dados.get('empresa',''), "CNPJ", dados.get('cnpj',''))
+    pdf.item_duas_colunas(label_nome, dados.get('empresa',''), label_doc, documento)
     pdf.item_duas_colunas("Setor", dados.get('setor',''), "Contato", dados.get('contato',''))
     pdf.item_duas_colunas("Município", dados.get('municipio',''), "Estado", dados.get('estado',''))
-    pdf.item_duas_colunas("Colaboradores", dados.get('n_colaboradores',''), "Fundação", dados.get('ano_fundacao',''))
-    pdf.ln(2)
     
-    # Endereço e afins seguem a estrutura segura base
-    pdf.item("Endereço", f"{dados.get('endereco','')} ({dados.get('tipo_endereco','')})")
-    pdf.item("Associado CDL/BH", f"{dados.get('cdl_bh','')} (Nº: {dados.get('num_associado','')})")
-    pdf.item("Estrutura", f"Loja Física: {dados.get('loja_fisica','')} | Loja Virtual: {dados.get('loja_virtual','')}")
+    if is_pj:
+        pdf.item_duas_colunas("Colaboradores", dados.get('n_colaboradores',''), "Fundação", dados.get('ano_fundacao',''))
+    else:
+        pdf.item_horizontal("Nascimento", dados.get('ano_fundacao',''))
+    
+    pdf.item_horizontal("Endereço", f"{dados.get('endereco','')} ({dados.get('tipo_endereco','')})")
+    pdf.item_horizontal("Associado CDL/BH", f"{dados.get('cdl_bh','')} (Nº: {dados.get('num_associado','')})")
+    pdf.item_horizontal("Estrutura", f"Loja Física: {dados.get('loja_fisica','')} | Loja Virtual: {dados.get('loja_virtual','')}")
 
     pdf.secao("ESCOPO ESTRATÉGICO")
-    pdf.item("O que vende / Serviços", dados.get('o_que_vende',''))
-    pdf.item("Objetivo com o negócio", dados.get('objetivo',''))
+    lbl_vende = "O que vende / Serviços" if is_pj else "Atuação / Serviços"
+    pdf.item(lbl_vende, dados.get('o_que_vende',''))
+    pdf.item("Objetivo", dados.get('objetivo',''))
     pdf.item("Principais desafios", dados.get('desafios',''))
     pdf.item("Interesse em expansão", dados.get('interesse_expansao',''))
 
     # ======================
-    # 2 REPRESENTANTES
+    # 2 REPRESENTANTES / PARTICIPANTES
     # ======================
-    pdf.secao("2. REPRESENTANTES E PARTICIPANTES")
+    titulo_secao_2 = "2. REPRESENTANTES" if is_pj else "2. PARTICIPANTES"
+    pdf.secao(titulo_secao_2)
     participantes = dados.get("participantes", [])
     if participantes:
         for i, p in enumerate(participantes):
             pdf.set_font("Arial", "B", 10)
             pdf.cell(0, 7, limpar_texto(f"Participante {i+1}:"), border=0, ln=True, align="L")
             pdf.set_font("Arial", "", 10)
-            info_p = f"Nome: {p.get('nome','')} | Cargo: {p.get('cargo','')} | CPF: {p.get('cpf','')}\n"
-            info_p += f"Tempo: {p.get('tempo','')} | Celular: {p.get('celular','')} | E-mail: {p.get('email','')}"
+            
+            if is_pj:
+                info_p = f"Nome: {p.get('nome','')} | Cargo: {p.get('cargo','')} | CPF: {p.get('cpf','')}\n"
+            else:
+                info_p = f"Nome: {p.get('nome','')} | CPF: {p.get('cpf','')}\n"
+                
+            info_p += f"Telefone: {p.get('celular','')} | E-mail: {p.get('email','')}"
             pdf.multi_cell(0, 6, limpar_texto(info_p))
             pdf.ln(2)
     else:
@@ -155,7 +180,7 @@ def gerar_ata_interna(dados, resultados, caminho_radar, nome_arquivo, modo="Diag
             pdf.ln(1)
             perguntas = res.get("detalhes_perguntas", [])
             for p in perguntas:
-                pdf.item(p['pergunta'], f"R: {p['resposta']}")
+                pdf.item(p['pergunta'], p['resposta'])
             pdf.item("Notas Internas do Consultor", res.get("observacoes", "Sem observações."))
             pdf.ln(2)
     else:
@@ -169,26 +194,58 @@ def gerar_ata_interna(dados, resultados, caminho_radar, nome_arquivo, modo="Diag
             if not isinstance(vals, dict):
                 vals = {}
                 
-            # USANDO A MESMA BASE DO DIAGNÓSTICO AQUI:
             pdf.set_font("Arial", "B", 11)
             pdf.set_fill_color(245, 245, 245)
             pdf.cell(0, 8, limpar_texto(f" Área: {area_nome}"), border=0, ln=True, align="L", fill=True)
             pdf.ln(1)
             
-            # Usando o método seguro pdf.item()
             pdf.item("Resposta do Cliente", vals.get('resposta_cliente', 'N/A'))
             pdf.item("Observações do Agente", vals.get('observacoes_agente', 'N/A'))
-            pdf.item("Demanda / Interesse", f"Demanda (Empresa): {vals.get('demanda', 'N/A')} | Interesse (Pessoa): {vals.get('interesse', 'N/A')}")
+            nota = vals.get('demanda', 0) if is_pj else vals.get('interesse', 0) # 1. Pega a nota certa dependendo se é PJ ou PF
+            # 2. Transforma em número inteiro 
+            try:
+                nota = int(nota)
+            except:
+                nota = 0
+
+            # 3. Dicionários tradutores
+            dic_demanda = {1: "Demanda Muito Baixa", 2: "Demanda Baixa", 3: "Demanda Média", 4: "Demanda Alta", 5: "Demanda Crítica"}
+            dic_interesse = {1: "Nenhum Interesse", 2: "Baixo Interesse", 3: "Interesse Moderado", 4: "Alto Interesse", 5: "Interesse Muito Alto"}
+            
+            # 4. Escolhe a frase certa e monta o texto final
+            if is_pj:
+                texto_nivel = dic_demanda.get(nota, "Não avaliado")
+            else:
+                texto_nivel = dic_interesse.get(nota, "Não avaliado")
+                
+            pdf.item("Nível", f"{texto_nivel} ({nota})")
             pdf.ln(2)
             
         pdf.secao("4. ALINHAMENTO FINANCEIRO")
         pdf.item("Disposição para Investimento", resultados.get("disposto_investir", "N/A"))
         pdf.item("Faixa de Orçamento", resultados.get("orcamento", "N/A"))
-        
+          
         pdf.secao("5. CONCLUSÃO DO ACOLHIMENTO")
-        pdf.item("Direcionamento", resultados.get("direcionamento", "N/A"))
-        pdf.item("Principal Dor", resultados.get("dor_principal_acolh", "N/A"))
-        pdf.item("Solução Ofertada", resultados.get("solucao_ofertada", "N/A"))
+        pdf.item("Principal Dor", resultados.get("dor_principal_acolh", "N/A")) 
+        pdf.item("Direcionamento", resultados.get("direcionamento", "N/A"))     
+        sol_of = resultados.get("solucao_ofertada", "N/A")
+        detalhe_sol = resultados.get("solucao_detalhe", {})
+        
+        if detalhe_sol:
+            texto_sol = f"{sol_of}\n"
+            texto_sol += f"Descrição: {detalhe_sol.get('descricao', 'Não informada')}\n"
+            texto_sol += f"Instituição: {detalhe_sol.get('instituicao', 'Não informada')}"
+            if detalhe_sol.get('carga_horaria'):
+                texto_sol += f"\nCarga Horária: {detalhe_sol.get('carga_horaria', '')}"
+            if detalhe_sol.get('custo'):
+                texto_sol += f"\nCusto: {detalhe_sol.get('custo', '')}"
+            if detalhe_sol.get('link'):
+                texto_sol += f"\nLink de Acesso: {detalhe_sol.get('link', '')}"
+                
+            pdf.item("Solução Ofertada", texto_sol)
+        else:
+            pdf.item("Solução Ofertada", str(sol_of))
+            
         pdf.item("Agendamento", resultados.get("agendamento", "N/A"))
         
         pdf.secao("6. RELATÓRIO FINAL")
@@ -221,58 +278,84 @@ def gerar_ata_interna(dados, resultados, caminho_radar, nome_arquivo, modo="Diag
                 pdf.set_font("Arial", "B", 11)
                 pdf.cell(0, 8, limpar_texto(f"Indicação de Solução {i+1}"), border=0, ln=True, align="L")
                 
-                # --- AQUI ESTÃO OS CAMPOS NOVOS IMPRESSOS ---
+                # Textos longos usam o item normal (título em cima, texto embaixo)
                 pdf.item("Solução", s.get('solucao',''))
                 pdf.item("Descrição", s.get('descricao',''))
                 pdf.item("Motivo da Indicação", s.get('motivo',''))
-                pdf.item("Parceiro / Fornecedor", s.get('parceiro',''))
-                pdf.item("Custo Estimado", s.get('custo',''))
-                pdf.item("Checkpoints e Prazos", s.get('prazos',''))
+                pdf.item_horizontal("Parceiro / Fornecedor", s.get('parceiro',''))
+                
+                if s.get('carga_horaria'):
+                    pdf.item_horizontal("Carga Horária", s.get('carga_horaria'))
+                    
+                if s.get('custo'):
+                    pdf.item_horizontal("Custo Estimado", s.get('custo'))
+                    
+                if s.get('link'):
+                    pdf.item_horizontal("Link de Acesso", s.get('link'))
+                    
                 pdf.ln(2)
+        
+        # Prazos gerais no final (agora sim!)
+        pdf.item("Checkpoints e Prazos Gerais", dados.get('prazos_gerais', 'Nenhum prazo definido.'))
 
     pdf.output(nome_arquivo)
     return nome_arquivo
+
+
 def gerar_plano_cliente(dados, resultados, caminho_radar, nome_arquivo, modo="Diagnóstico Inicial"):
     pdf = PDF_Horizonte()
     pdf.alias_nb_pages()
     pdf.add_page()
     
     empresa = str(dados.get("empresa", "Empresa"))
-    titulo_doc = "PLANO DE AÇÃO" if modo == "Diagnóstico Inicial" else "PLANO DE AÇÃO - ACOLHIMENTO"
+    titulo_doc = "PLANO DE AÇÃO DIAGNÓSTICO" if modo == "Diagnóstico Inicial" else "PLANO DE AÇÃO - ACOLHIMENTO"
     
     pdf.set_font("Arial", "B", 14)
     pdf.cell(0, 10, limpar_texto(f"{titulo_doc} - {empresa.upper()}"), border=0, ln=True, align="C")
     pdf.ln(2)
 
+    documento = dados.get('cnpj', '')
+    is_pj = '/' in documento
+
     # ======================
-    # 1 DADOS DO NEGÓCIO E PARTICIPANTES (Igual para os dois modos)
+    # 1 DADOS DO NEGÓCIO E PARTICIPANTES
     # ======================
-    pdf.secao("1. DADOS DO NEGÓCIO")
+    titulo_secao_1 = "1. DADOS DO NEGÓCIO" if is_pj else "1. DADOS DO CLIENTE"
+    pdf.secao(titulo_secao_1)
+    
+    label_nome = "Empresa" if is_pj else "Nome Responsável"
+    label_doc = "CNPJ" if is_pj else "CPF"
+    
     pdf.item_duas_colunas("Data", dados.get('data',''), "Consultor", dados.get('consultor',''))
-    pdf.item_duas_colunas("Empresa", dados.get('empresa',''), "CNPJ", dados.get('cnpj',''))
+    pdf.item_duas_colunas(label_nome, dados.get('empresa',''), label_doc, documento)
     pdf.item_duas_colunas("Setor", dados.get('setor',''), "Contato", dados.get('contato',''))
     pdf.item_duas_colunas("Município", dados.get('municipio',''), "Estado", dados.get('estado',''))
     pdf.ln(2)
 
-    pdf.secao("2. PARTICIPANTES")
+    titulo_secao_2 = "2. REPRESENTANTES" if is_pj else "2. PARTICIPANTES"
+    pdf.secao(titulo_secao_2)
     participantes = dados.get("participantes", [])
     if participantes:
         for i, p in enumerate(participantes):
             pdf.set_font("Arial", "B", 10)
             pdf.cell(0, 7, limpar_texto(f"Participante {i+1}:"), border=0, ln=True, align="L")
             pdf.set_font("Arial", "", 10)
-            info_p = f"Nome: {p.get('nome','')} | Cargo: {p.get('cargo','')} | E-mail: {p.get('email','')}"
+            
+            if is_pj:
+                info_p = f"Nome: {p.get('nome','')} | Cargo: {p.get('cargo','')} | Telefone: {p.get('celular','')}\n"
+            else:
+                info_p = f"Nome: {p.get('nome','')} | Telefone: {p.get('celular','')}\n"
+                
+            info_p += f"E-mail: {p.get('email','')}"
             pdf.multi_cell(0, 6, limpar_texto(info_p))
             pdf.ln(2)
     else:
         pdf.item("Participantes", "Nenhum participante registrado.")
 
-    # ======================
     # CONTEÚDO ESPECÍFICO POR MODO
-    # ======================
     if modo == "Diagnóstico Inicial":
         
-        # RADAR
+        # RADAR (O lindo automático do App.py!)
         if caminho_radar and os.path.exists(caminho_radar):
             pdf.secao("3. RADAR DE MATURIDADE")
             pdf.ln(2)
@@ -294,14 +377,27 @@ def gerar_plano_cliente(dados, resultados, caminho_radar, nome_arquivo, modo="Di
                 pdf.set_font("Arial", "B", 11)
                 pdf.cell(0, 8, limpar_texto(f"Indicação de Solução {i+1}"), border=0, ln=True, align="L")
                 
-                # --- AQUI ESTÃO OS CAMPOS NOVOS IMPRESSOS ---
+                # Textos longos usam o item normal (título em cima, texto embaixo)
                 pdf.item("Solução", s.get('solucao',''))
                 pdf.item("Descrição", s.get('descricao',''))
                 pdf.item("Motivo da Indicação", s.get('motivo',''))
-                pdf.item("Parceiro / Fornecedor", s.get('parceiro',''))
-                pdf.item("Custo Estimado", s.get('custo',''))
-                pdf.item("Checkpoints e Prazos", s.get('prazos',''))
+                
+                # Textos curtos usam o horizontal para ficar elegante e economizar papel!
+                pdf.item_horizontal("Parceiro / Fornecedor", s.get('parceiro',''))
+                
+                if s.get('carga_horaria'):
+                    pdf.item_horizontal("Carga Horária", s.get('carga_horaria'))
+                    
+                if s.get('custo'):
+                    pdf.item_horizontal("Custo Estimado", s.get('custo'))
+                    
+                if s.get('link'):
+                    pdf.item_horizontal("Link de Acesso", s.get('link'))
+                    
                 pdf.ln(2)
+        
+        # Prazos gerais no final do Plano de Ação
+        pdf.item("Checkpoints e Prazos Gerais", dados.get('prazos_gerais', 'Nenhum prazo definido.'))
 
     else: # Modo Acolhimento
         pdf.secao("3. MAPEAMENTO DE ACOLHIMENTO")
@@ -310,8 +406,7 @@ def gerar_plano_cliente(dados, resultados, caminho_radar, nome_arquivo, modo="Di
         
         # RADAR
         if caminho_radar and os.path.exists(caminho_radar):
-            pdf.add_page() # Adiciona página se ficar muito apertado
-            pdf.secao("RADAR DE ACOLHIMENTO")
+            pdf.secao("4. RADAR DE ACOLHIMENTO")
             pdf.ln(2)
             try:
                 largura_util = pdf.w - pdf.l_margin - pdf.r_margin
@@ -322,10 +417,23 @@ def gerar_plano_cliente(dados, resultados, caminho_radar, nome_arquivo, modo="Di
             except:
                 pass
                 
-        pdf.secao("4. CONCLUSÃO DO ACOLHIMENTO")
-        pdf.item("Direcionamento", resultados.get("direcionamento", "N/A"))
-        pdf.item("Principal Dor", resultados.get("dor_principal_acolh", "N/A"))
-        pdf.item("Solução Ofertada", resultados.get("solucao_ofertada", "N/A"))
+        pdf.secao("5. CONCLUSÃO DO ACOLHIMENTO")
+        pdf.item("Principal Dor", resultados.get("dor_principal_acolh", "N/A")) 
+        pdf.item("Direcionamento", resultados.get("direcionamento", "N/A"))    
+        
+        # Pega a solução ofertada e os detalhes (como Link e Carga horária)
+        sol_of = resultados.get("solucao_ofertada", "N/A")
+        detalhe_sol = resultados.get("solucao_detalhe", {})
+        if detalhe_sol:
+            texto_sol = f"{sol_of}\nDescrição: {detalhe_sol.get('descricao', '')}\nInstituição: {detalhe_sol.get('instituicao', '')}"
+            if detalhe_sol.get('carga_horaria'):
+                texto_sol += f"\nCarga Horária: {detalhe_sol.get('carga_horaria', '')}"
+            if detalhe_sol.get('link'):
+                texto_sol += f"\nLink de Acesso: {detalhe_sol.get('link', '')}"
+            pdf.item("Solução Ofertada", texto_sol)
+        else:
+            pdf.item("Solução Ofertada", str(sol_of))
+            
         pdf.item("Agendamento", resultados.get("agendamento", "N/A"))
 
     pdf.output(nome_arquivo)

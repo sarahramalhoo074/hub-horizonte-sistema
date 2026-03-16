@@ -1,8 +1,7 @@
-
 # Perguntas do diagnósticos e configurações
 DIAGNOSTICO_CONFIG = {
     "Recursos Humanos": {
-        "abreviacao": "RH",
+        "abreviacao": "Recursos Humanos",
         "perguntas": [
             {
                 "id": "rh_q1",
@@ -87,7 +86,7 @@ DIAGNOSTICO_CONFIG = {
                     {"texto": "Não existe", "valor": 1},
                     {"texto": "Existe apenas quando há problema", "valor": 2},
                     {"texto": "Existe de forma informal", "valor": 3},
-                    {"texto": "Existe estruturado e periódico", "valor": 4}
+                    {"texto": "Existe estruturado e periodicamente", "valor": 4}
                 ]
             },
             {
@@ -133,7 +132,7 @@ DIAGNOSTICO_CONFIG = {
         ]
     },
     "Atendimento ao Cliente": {
-        "abreviacao": "Atendimento",
+        "abreviacao": "Atendimento ao Cliente",
         "perguntas": [
             {
                 "id": "atend_q1",
@@ -148,7 +147,7 @@ DIAGNOSTICO_CONFIG = {
         ]
     },
     "Operação, Estoque e Logística": {
-        "abreviacao": "Operação",
+        "abreviacao": "Operação, Estoque<br>e Logística",
         "perguntas": [
             {
                 "id": "oper_q1",
@@ -163,7 +162,7 @@ DIAGNOSTICO_CONFIG = {
         ]
     },
     "Sustentabilidade Financeira": {
-        "abreviacao": "Financeiro",
+        "abreviacao": "Sustentabilidade Financeira",
         "perguntas": [
             {
                 "id": "finan_q1",
@@ -178,7 +177,7 @@ DIAGNOSTICO_CONFIG = {
         ]
     },
     "Concorrência e Diferenciais": {
-        "abreviacao": "Estratégia",
+        "abreviacao": "Concorrência e Diferenciais",
         "perguntas": [
             {
                 "id": "concor_q1",
@@ -193,7 +192,7 @@ DIAGNOSTICO_CONFIG = {
         ]
     },
     "Tecnologia e Inovação": {
-        "abreviacao": "Tecnologia",
+        "abreviacao": "Tecnologia e Inovação",
         "perguntas": [
             {
                 "id": "tecno_q1",
@@ -208,7 +207,7 @@ DIAGNOSTICO_CONFIG = {
         ]
     },
     "Comercial e Marketing": {
-        "abreviacao": "Marketing",
+        "abreviacao": "Comercial e Marketing",
         "perguntas": [
             {
                 "id": "mkt_q1",
@@ -224,12 +223,11 @@ DIAGNOSTICO_CONFIG = {
     }
 }
 
-# Configurações específicas para o Formulário de Acolhimento
 ACOLHIMENTO_CONFIG = {
     "Mapeamento Inicial": {
         "disponibilidade": [
-            "Dias de semana — manhã ou tarde",
-            "Dias de semana — noite",
+            "Dias de semana - manhã ou tarde",
+            "Dias de semana - noite",
             "Apenas finais de semana",
             "Dias de semana e finais de semana"
         ],
@@ -250,53 +248,53 @@ ACOLHIMENTO_CONFIG = {
         "areas": [
             {
                 "nome": "Tecnologia e Inovação",
-                "abreviacao": "TEC",
-                "reflexao": "Como você avalia o nível de organização, digitalização e uso de tecnologia na sua rotina profissional ou no seu negócio? Você acredita que poderia ganhar mais eficiência, produtividade ou competitividade com melhor uso de ferramentas digitais, automação, análise de dados ou soluções inovadoras?"
+                "abreviacao": "Tecnologia e Inovação",
+                "reflexao": "Como você avalia o uso de tecnologia e inovação na sua rotina profissional ou no seu negócio? Você sente necessidade de aprender ou utilizar melhor ferramentas digitais, automatizar processos, atuar no ambiente online ou explorar soluções como inteligência artificial?"
             },
             {
-                "nome": "Marketing e Vendas",
-                "abreviacao": "MKT",
-                "reflexao": "Como está a sua presença digital e a captação de novos clientes? Você sente que seus processos de venda e divulgação são eficazes?"
+                "nome": "Comercial e Marketing",
+                "abreviacao": "Comercial e Marketing",
+                "reflexao": "Em relação à divulgação, vendas ou posicionamento, como você avalia a forma como você (ou seu negócio) se apresenta e se comunica com o público? Você sente que poderia melhorar sua presença digital, estratégias de venda, redes sociais ou a forma de atrair clientes e oportunidades?"
             },
             {
-                "nome": "Processos e Operações",
-                "abreviacao": "PROC",
-                "reflexao": "Sua rotina de trabalho é organizada? Os processos do seu negócio são claros e padronizados para evitar erros e retrabalho?"
+                "nome": "Operação e Logística",
+                "abreviacao": "Operação e Logística",
+                "reflexao": "Sobre a organização do dia a dia, processos internos ou rotinas de trabalho, você identifica pontos que poderiam ser mais eficientes? Por exemplo, gestão do tempo, organização de atividades, controle de recursos, entregas ou fluxo de trabalho."
             },
             {
-                "nome": "Gestão Financeira",
-                "abreviacao": "FIN",
-                "reflexao": "Como você lida com as finanças? Existe clareza sobre lucros, despesas e investimentos necessários para o crescimento?"
+                "nome": "Sustentabilidade Financeira",
+                "abreviacao": "Sustentabilidade Financeira",
+                "reflexao": "Pensando na parte financeira, como você avalia hoje sua organização e segurança financeira, pessoal ou do negócio? Existem desafios como falta de controle, dificuldade de planejamento, gestão de custos, acesso a crédito ou geração de renda sustentável?"
             },
             {
-                "nome": "Pessoas e Liderança",
-                "abreviacao": "PES",
-                "reflexao": "Como está o engajamento da equipe (se houver) ou a sua própria gestão de tempo e liderança frente aos desafios?"
+                "nome": "Recursos Humanos",
+                "abreviacao": "Recursos Humanos",
+                "reflexao": "Quando falamos de pessoas, equipes ou parcerias, você enfrenta desafios relacionados à comunicação, liderança, divisão de tarefas, engajamento, contratação ou desenvolvimento de pessoas?"
             },
             {
-                "nome": "Estratégia e Mercado",
-                "abreviacao": "EST",
-                "reflexao": "Você tem clareza de onde quer chegar e como se diferenciar da concorrência no mercado atual?"
+                "nome": "Concorrência e Diferenciais:",
+                "abreviacao": "Concorrência e Diferenciais:",
+                "reflexao": "Em relação ao mercado em que você atua (ou à sua área profissional), como você avalia o seu posicionamento estratégico frente à concorrência? Você possui clareza sobre seus objetivos de posicionamento, público-alvo e diferenciais competitivos, e utiliza algum tipo de planejamento, metas ou ferramentas para acompanhar se você (ou seu negócio) está se destacando e sendo escolhido em relação a outras opções do mercado?"
             },
             {
-                "nome": "Experiência do Cliente",
-                "abreviacao": "CLI",
-                "reflexao": "Como você avalia a satisfação dos seus clientes e a jornada deles desde o primeiro contato até o pós-venda?"
+                "nome": "Atendimento ao Cliente",
+                "abreviacao": "Atendimento ao Cliente",
+                "reflexao": "Por fim, como você avalia a experiência de atendimento e relacionamento que você (ou seu negócio) oferece às pessoas com quem se relaciona - clientes, parceiros ou público em geral? Você considera esse um ponto que poderia ser aprimorado?"
             }
         ],
         "escala_demanda": [
-            {"texto": "Demanda Muito Baixa", "valor": 5},
-            {"texto": "Demanda Baixa", "valor": 4},
+            {"texto": "Demanda Muito Baixa", "valor": 1},
+            {"texto": "Demanda Baixa", "valor": 2},
             {"texto": "Demanda Média", "valor": 3},
-            {"texto": "Demanda Alta", "valor": 2},
-            {"texto": "Demanda Crítica", "valor": 1}
+            {"texto": "Demanda Alta", "valor": 4},
+            {"texto": "Demanda Crítica", "valor": 5}
         ],
         "escala_interesse": [
-            {"texto": "Nenhum Interesse", "valor": 5},
-            {"texto": "Baixo Interesse", "valor": 4},
+            {"texto": "Nenhum Interesse", "valor": 1},
+            {"texto": "Baixo Interesse", "valor": 2},
             {"texto": "Interesse Moderado", "valor": 3},
-            {"texto": "Alto Interesse", "valor": 2},
-            {"texto": "Interesse Muito Alto", "valor": 1}
+            {"texto": "Alto Interesse", "valor": 4},
+            {"texto": "Interesse Muito Alto", "valor": 5}
         ]
     }
 }
@@ -310,60 +308,182 @@ GDRIVE_CONFIG = {
 }
 
 # Listas Auxiliares
-LISTA_DIRECIONAMENTO = ["Eventos", "Programas", "Mandala de Soluções", "Trilha do Conhecimento", "Diagnóstico Completo", "Negociação de Nova Parceria"]
-LISTA_DOR_PRINCIPAL = ["Marketing", "Atendimento ao cliente", "Financeiro"]
-LISTA_SOLUCAO_OFERTADA = ["Evento x", "Evento y", "Solução 1 da mandala", "Solução 2 da mandala"]
+LISTA_DIRECIONAMENTO = ["Eventos e Programas", "Mandala de Soluções", "Trilha do Conhecimento", "Diagnóstico Completo", "Negociação de Nova Parceria"]
+LISTA_DOR_PRINCIPAL = [
+    "Atendimento ao Cliente: Agilidade e Estrutura de Atendimento",
+    "Atendimento ao Cliente: Relacionamento, Fidelização e Pós-venda",
+    "Atendimento ao Cliente: Perfil e Inteligência sobre o Cliente",
+    "Comercial e Marketing: Melhoria de Vendas",
+    "Comercial e Marketing: Estruturação de Canais Digitais e Vendas Online",
+    "Comercial e Marketing: Estratégia de Marketing e Posicionamento Digital",
+    "Operação, Logística e Estoque: Gerenciamento e Controle de Estoque",
+    "Operação, Logística e Estoque: Logística e Rotas",
+    "Operação, Logística e Estoque: Compras e Fornecedores",
+    "Operação, Logística e Estoque: Segurança do Trabalho",
+    "Recursos Humanos: Recrutamento e Seleção",
+    "Recursos Humanos: Qualificação e Capacitação",
+    "Recursos Humanos: Gestão e Produtividade da Equipe",
+    "Sustentabilidade Financeira: Gestão Financeira",
+    "Sustentabilidade Financeira: Gestão Jurídica e Contábil",
+    "Sustentabilidade Financeira: Recursos Financeiros e Capital",
+    "Sustentabilidade Financeira: Precificação",
+    "Tecnologia e Inovação: Gestão e Automação de Processos",
+    "Tecnologia e Inovação: Análise e Uso de Dados",
+    "Concorrência e Diferenciais: Planejamento Estratégico",
+    "Concorrência e Diferenciais: Diferenciais Competitivos e Inovação",
+    "Concorrência e Diferenciais: Análise e Posicionamento de Mercado"
+]
 LISTA_ESTADOS = ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"]
 LISTA_SETORES = ["Comércio", "Serviços", "Indústria", "Agronegócio", "Outro"]
 LOGO_URL = "https://exemplo.com/logo.png"
 
-# Catálogo automatizado de Soluções
-CATALOGO_SOLUCOES = {
-    "Nenhuma": {
-        "descricao": "", 
-        "parceiro": "", 
-        "custo": ""
+
+# --- NOVOS CATÁLOGOS PARA O ACOLHIMENTO E DIAGNÓSTICO ---
+
+CATALOGO_MANDALA = {
+    "Centro de Convenções": {"descricao": "Acesso ao Centro de Convenções da CDL/BH.", "instituicao": "CDL/BH", "custo": "Não informado"},
+    "Plano de Saúde (Unimed e Hapvida)": {"descricao": "Condições especiais em planos de saúde Unimed e Hapvida.", "instituicao": "CDL/BH", "custo": "Não informado"},
+    "Cartão Saúde": {"descricao": "Acesso a benefícios e descontos na área da saúde.", "instituicao": "CDL/BH", "custo": "Não informado"},
+    "Cemig Sim (Desconto na conta)": {"descricao": "Desconto na conta de luz através da parceria com a Cemig Sim.", "instituicao": "CDL/BH", "custo": "Não informado"},
+    "SPC Registros": {"descricao": "Registro de clientes inadimplentes no SPC Brasil e envio de carta de notificação para regularização.", "instituicao": "CDL/BH", "custo": "Não informado"},
+    "CDL Cobrança": {"descricao": "Gestão completa da carteira de inadimplência da sua empresa feita pela CDL/BH.", "instituicao": "CDL/BH", "custo": "Não informado"},
+    "Garantia de Cheques": {"descricao": "Consulta e garantia de recebimento de cheques. Reembolso em caso de devolução pelos bancos.", "instituicao": "CDL/BH", "custo": "Não informado"},
+    "BDMG": {"descricao": "Acesso facilitado a linhas de crédito através do BDMG.", "instituicao": "CDL/BH", "custo": "Não informado"},
+    "SPC AVISA": {"descricao": "Monitoramento de inclusão/exclusão de informações negativas e consultas realizadas no seu CPF ou CNPJ.", "instituicao": "CDL/BH", "custo": "Não informado"},
+    "CDL Negócios (Grupos Temáticos)": {"descricao": "Participação em grupos temáticos (Moda, Pet, Gastronomia, etc.) para networking, viagens e eventos focados no seu setor.", "instituicao": "CDL/BH", "custo": "Não informado"}
+}
+
+CATALOGO_TRILHA = {
+    "WhatsApp Day": {
+        "descricao": "Aprenda a usar o WhatsApp Business como ferramenta de atendimento, relacionamento e vendas, incluindo automação e catálogo.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "13 horas", "link": "https://sebraeplay.com.br/cursos/whatsapp-day", "custo": "Gratuito"
     },
-    "CDL Negócios": {"descricao": "Descrição XXXXXXXX", "parceiro": "CDL", "custo": "R$ 2,00"},
-    "Cemig Sim": {"descricao": "Descrição XXXXXXXX", "parceiro": "Parceiro a definir", "custo": "R$ 2,00"},
-    "Centro de Convenções": {"descricao": "Descrição XXXXXXXX", "parceiro": "Parceiro a definir", "custo": "R$ 2,00"},
-    "Instagram Day + Facebook Day + Whatsapp Day": {"descricao": "Descrição XXXXXXXX", "parceiro": "Parceiro a definir", "custo": "R$ 2,00"},
-    "Como vender em Marketplaces: Mercado Livre, Shopee e Amazon": {"descricao": "Descrição XXXXXXXX", "parceiro": "Parceiro a definir", "custo": "R$ 2,00"},
-    "Curso Iniciantes Digital - Sebrae Play": {"descricao": "Descrição XXXXXXXX", "parceiro": "Sebrae", "custo": "R$ 2,00"},
-    "Curso Aprendiz Digital - Sebrae Play": {"descricao": "Descrição XXXXXXXX", "parceiro": "Sebrae", "custo": "R$ 2,00"},
-    "Curso Empreendedor Digital - Sebrae Play": {"descricao": "Descrição XXXXXXXX", "parceiro": "Sebrae", "custo": "R$ 2,00"},
-    "Curso Inovador Digital - Sebrae Play": {"descricao": "Descrição XXXXXXXX", "parceiro": "Sebrae", "custo": "R$ 2,00"},
-    "Luz, Câmera, Conversão - Sebrae Play": {"descricao": "Descrição XXXXXXXX", "parceiro": "Sebrae", "custo": "R$ 2,00"},
-    "SPC Registros": {"descricao": "Descrição XXXXXXXX", "parceiro": "SPC", "custo": "R$ 2,00"},
-    "CDL Cobrança": {"descricao": "Descrição XXXXXXXX", "parceiro": "CDL", "custo": "R$ 2,00"},
-    "Garantia de Cheques": {"descricao": "Descrição XXXXXXXX", "parceiro": "Parceiro a definir", "custo": "R$ 2,00"},
-    "BDMG para acesso ao crédito": {"descricao": "Descrição XXXXXXXX", "parceiro": "BDMG", "custo": "R$ 2,00"},
-    "Marketing de Relacionamento - Sebrae Play": {"descricao": "Descrição XXXXXXXX", "parceiro": "Sebrae", "custo": "R$ 2,00"},
-    "Plano de Saúde (Unimed e Hapvida)": {"descricao": "Descrição XXXXXXXX", "parceiro": "Unimed/Hapvida", "custo": "R$ 2,00"},
-    "Cartão Saúde": {"descricao": "Descrição XXXXXXXX", "parceiro": "Parceiro a definir", "custo": "R$ 2,00"},
-    "SPC AVISA": {"descricao": "Descrição XXXXXXXX", "parceiro": "SPC", "custo": "R$ 2,00"},
-    "Maxbot - Integração de chatbot": {"descricao": "Descrição XXXXXXXX", "parceiro": "Maxbot", "custo": "R$ 2,00"},
-    "Maxbot - Treinamentos de Ferramentas de IA para Atendimento": {"descricao": "Descrição XXXXXXXX", "parceiro": "Maxbot", "custo": "R$ 2,00"},
-    "Maxbot - Treinamentos de Boas Práticas de Atendimento no WhatsApp": {"descricao": "Descrição XXXXXXXX", "parceiro": "Maxbot", "custo": "R$ 2,00"},
-    "GeoUAI - Geolocalização de Ponto Comercial": {
-        "descricao": "Atendimento no ponto físico > É elaborado um relatório de análise sobre o ponto comercial, apontando possibilidades de melhorias. Indicam também questões de precificação e portfólio de produtos.", 
-        "parceiro": "GeoUAI", 
-        "custo": "R$ 2,00"
+    "Comportamento do Consumidor Digital": {
+        "descricao": "Entenda as tendências do consumidor online e como transformar leads em clientes fiéis criando conexões de valor.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "2 horas", "link": "https://sebraeplay.com.br/cursos/comportamento-do-consumidor-digital", "custo": "Gratuito"
     },
-    "GeoUAI - Geolocalização de Tráfego Pago": {
-        "descricao": "Atendimento online > Normalmente, eles fazem contratos de 3 meses para o acompanhamento de Tráfego Pago.", 
-        "parceiro": "GeoUAI", 
-        "custo": "R$ 2,00"
+    "Apresentações de Impacto": {
+        "descricao": "Aprenda a criar apresentações envolventes usando narrativa, design e técnicas de persuasão para encantar seu público.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "3 horas", "link": "https://sebraeplay.com.br/cursos/apresentacoes-de-impacto", "custo": "Gratuito"
     },
-    "Inup": {
-        "descricao": "Ecossistema de soluções contábeis e financeiras para empreendedores, startups e empresas em crescimento. Com abordagem consultiva e foco em tecnologia.", 
-        "parceiro": "Inup", 
-        "custo": "R$ 2,00"
+    "Fundamentos sobre Marketing": {
+        "descricao": "Fortaleça sua marca aprendendo desde proposta de valor e público-alvo até marketing digital e fidelização.",
+        "instituicao": "IEBT", "carga_horaria": "1 hora", "link": "https://www.skininnovation.com.br/course/horizonte", "custo": "Gratuito"
     },
-    "PaperUP": {
-        "descricao": "Sistemas de gestão personalizados para as empresas (controle financeiro, estoque, caixa, PDV, orçamentos, sites, delivery, cupons e notas fiscais, etc.).", 
-        "parceiro": "PaperUP", 
-        "custo": "R$ 2,00"
+    "E-mail marketing para a sua empresa": {
+        "descricao": "Crie campanhas de e-mail marketing com foco em engajamento e conversão, abordando conteúdo e análise de resultados.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "4 horas", "link": "https://sebraeplay.com.br/cursos/e-mail-marketing-para-a-sua-empresa", "custo": "Gratuito"
     },
-    "Oficina Inteligência Financeira - Sebrae Play": {"descricao": "Descrição XXXXXXXX", "parceiro": "Sebrae", "custo": "R$ 2,00"}
+    "Luz, Câmera e Conversão": {
+        "descricao": "Use vídeos como ferramenta de vendas. Aprenda sobre planejamento, gravação, edição e análise de desempenho.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "2 horas", "link": "https://sebraeplay.com.br/cursos/luz-camera-e-conversao", "custo": "Gratuito"
+    },
+    "Planejamento de Marketing Digital": {
+        "descricao": "Estruture um planejamento estratégico digital alinhado às tendências para gerar resultados no ambiente online.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "4 horas", "link": "https://sebraeplay.com.br/cursos/planejamento-de-marketing-digital", "custo": "Gratuito"
+    },
+    "Novo Marketing de Relacionamento": {
+        "descricao": "Fortaleça a relação com clientes mapeando a jornada de compra e criando experiências marcantes e duradouras.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "4 horas", "link": "https://sebraeplay.com.br/cursos/novo-marketing-relacionamento", "custo": "Gratuito"
+    },
+    "Impulsionamento de Vendas Digitais": {
+        "descricao": "Escale resultados impulsionando vendas em canais digitais e marketplaces. Entenda o consumidor e estratégias de conversão.",
+        "instituicao": "IEBT", "carga_horaria": "40 minutos", "link": "https://www.skininnovation.com.br/course/horizonte", "custo": "Gratuito"
+    },
+    "Instagram Day": {
+        "descricao": "Utilize o Instagram de forma estratégica abordando criação de conteúdo, anúncios, métricas e funcionalidades da plataforma.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "13 horas", "link": "https://sebraeplay.com.br/cursos/instagram-day", "custo": "Gratuito"
+    },
+    "Facebook Day": {
+        "descricao": "Explore Grupos, Marketplace, Stories e anúncios do Facebook para gerar engajamento e vendas.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "13 horas", "link": "https://sebraeplay.com.br/cursos/facebook-day", "custo": "Gratuito"
+    },
+    "Empreenda: Vendas Automatizadas": {
+        "descricao": "Crie sistemas automáticos de captação e conversão usando ferramentas digitais para vender com menos esforço manual.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "3 horas", "link": "https://sebraeplay.com.br/cursos/empreenda-vendas-automatizadas", "custo": "Gratuito"
+    },
+    "Empreenda: Vendas Pontuais": {
+        "descricao": "Estruture interações eficientes com clientes, combinando automação e toque humano para gerar experiências positivas.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "3 horas", "link": "https://sebraeplay.com.br/cursos/empreenda-vendas-pontuais", "custo": "Gratuito"
+    },
+    "Empreenda: Vendas Personalizadas": {
+        "descricao": "Ofereça um atendimento mais humano e estratégico, adaptando soluções às necessidades do cliente para fidelização.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "3 horas", "link": "https://sebraeplay.com.br/cursos/empreenda-vendas-personalizadas", "custo": "Gratuito"
+    },
+    "Empreenda: Vendas Dedicadas": {
+        "descricao": "Desenvolva relações contínuas com clientes focando na identificação de necessidades e aumento do valor percebido.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "3 horas", "link": "https://sebraeplay.com.br/cursos/empreenda-vendas-dedicadas", "custo": "Gratuito"
+    },
+    "Mais lucro e menos custo no setor de Alimentação": {
+        "descricao": "Aplique práticas de ESG em negócios de alimentação para reduzir custos e aumentar a lucratividade de forma sustentável.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "4 horas", "link": "https://sebraeplay.com.br/cursos/mais-lucro-menos-custo-setor-de-alimentacao", "custo": "Gratuito"
+    },
+    "Gestão Inteligente na Moda com mais resultados": {
+        "descricao": "Alinhe sustentabilidade, organização interna e aumento de lucro aplicando práticas de ESG em negócios de moda.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "4 horas", "link": "https://sebraeplay.com.br/cursos/gestao-inteligente-na-moda-com-mais-resultados", "custo": "Gratuito"
+    },
+    "Turismo Gastronômico": {
+        "descricao": "Transforme a gastronomia em diferencial competitivo criando experiências, valorizando produtos locais e parcerias.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "3 horas e 30 minutos", "link": "https://sebraeplay.com.br/cursos/turismo-gastronomico", "custo": "Gratuito"
+    },
+    "Oficina Adaptabilidade, in book": {
+        "descricao": "Reflita sobre propósito e transformação conhecendo conceitos de adaptabilidade e novos modelos econômicos.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "3 horas", "link": "https://sebraeplay.com.br/cursos/oficina-adaptabilidade-in-book", "custo": "Gratuito"
+    },
+    "Planejamento e Gestão Estratégica": {
+        "descricao": "Construa um planejamento eficiente com ferramentas como FOFA, metas SMART, 5W2H e KPIs para organizar o crescimento.",
+        "instituicao": "IEBT", "carga_horaria": "45 minutos", "link": "https://www.skininnovation.com.br/course/horizonte", "custo": "Gratuito"
+    },
+    "Gestão de Pessoas e Liderança": {
+        "descricao": "Forme equipes de alta performance aprendendo sobre segurança psicológica, propósito e ferramentas como OKRs, Kanban e RACI.",
+        "instituicao": "IEBT", "carga_horaria": "45 minutos", "link": "https://www.skininnovation.com.br/course/horizonte", "custo": "Gratuito"
+    },
+    "Inteligência Emocional": {
+        "descricao": "Fortaleça sua saúde mental desenvolvendo habilidades para lidar com emoções, estresse e desafios profissionais.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "14 horas", "link": "https://sebraeplay.com.br/cursos/inteligencia-emocional", "custo": "Gratuito"
+    },
+    "Oficina Produtividade, in book": {
+        "descricao": "Aumente resultados com equilíbrio usando técnicas de priorização, gestão do tempo e foco baseadas no essencialismo.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "3 horas", "link": "https://sebraeplay.com.br/cursos/oficina-produtividade-in-book", "custo": "Gratuito"
+    },
+    "Oficina Relacionamento, in book": {
+        "descricao": "Desenvolva relacionamentos profissionais estratégicos usando conceitos de influência e networking.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "3 horas", "link": "https://sebraeplay.com.br/cursos/oficina-relacionamento-in-book", "custo": "Gratuito"
+    },
+    "In book Pocket Inteligência Financeira": {
+        "descricao": "Mude sua mentalidade financeira unindo organização e autoconhecimento para tomar decisões mais conscientes.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "3 horas", "link": "https://sebraeplay.com.br/cursos/in-book-pocket-inteligencia-financeira", "custo": "Gratuito"
+    },
+    "MEI: Já tem seu CNPJ, e agora?": {
+        "descricao": "Tome decisões com segurança conhecendo as obrigações, rotinas e gestão do MEI para manter seu CNPJ em ordem.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "4 horas", "link": "https://sebraeplay.com.br/cursos/mei-ja-tem-seu-cnpj", "custo": "Gratuito"
+    },
+    "MEI: Como iniciar o seu negócio": {
+        "descricao": "Transforme uma ideia em negócio formalizado como MEI aprendendo sobre planejamento e aspectos jurídicos e tributários.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "4 horas", "link": "https://sebraeplay.com.br/cursos/mei-como-iniciar-o-seu-negocio", "custo": "Gratuito"
+    },
+    "ALVO Sebrae: gestão inteligente de resultados": {
+        "descricao": "Use a plataforma ALVO para planejar metas, acompanhar indicadores e tomar decisões baseadas em dados.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "Não informado", "link": "https://sebraeplay.com.br/cursos/alvo-gestao-inteligente-de-resultados", "custo": "Gratuito"
+    },
+    "ChatGPT para pequenos negócios": {
+        "descricao": "Otimize tarefas, crie conteúdos e melhore a comunicação usando o ChatGPT de forma prática no dia a dia do negócio.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "35 minutos", "link": "https://sebraeplay.com.br/cursos/chatgpt-para-pequenos-negocios", "custo": "Gratuito"
+    },
+    "Iniciante Digital: despertando para o digital": {
+        "descricao": "Inicie o desenvolvimento de habilidades digitais conhecendo conceitos básicos e navegação segura.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "2 horas", "link": "https://sebraeplay.com.br/cursos/iniciante-digital-despertando-para-o-digital", "custo": "Gratuito"
+    },
+    "Inovador Digital: automatizando e escalando": {
+        "descricao": "Escale seu negócio implantando uma cultura de inovação, explorando automação, IA e análise de dados.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "3 horas", "link": "https://sebraeplay.com.br/cursos/inovador-digital-automatizando-escalando", "custo": "Gratuito"
+    },
+    "Aprendiz Digital: Experimentando as Primeiras Ferramentas": {
+        "descricao": "Prepare-se para o mercado digital aprendendo fundamentos de tecnologia, ferramentas, marketing e programação.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "3 horas", "link": "https://sebraeplay.com.br/cursos/aprendiz-digital", "custo": "Gratuito"
+    },
+    "Empreendedor Digital: integrando e otimizando": {
+        "descricao": "Melhore a operação digital e a expansão de vendas aprendendo a integrar canais e automatizar processos.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "3 horas", "link": "https://sebraeplay.com.br/cursos/empreendedor-digital", "custo": "Gratuito"
+    }
 }

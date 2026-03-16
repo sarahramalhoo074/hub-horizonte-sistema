@@ -37,18 +37,29 @@ st.markdown(f"""
     background: #FFFFFF; padding: 2rem; border-radius: 20px; text-align: center;
     margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-bottom: 3px solid #00B4D8;
 }}
-.logo-img {{ max-height: 120px; width: auto; }}
+.logo-img {{ max-height: 280px; width: auto; }}
 h1, h2, h3, p {{ font-family: 'Montserrat', sans-serif; color: #0F172A; }}
 .stButton > button {{
-    background: linear-gradient(90deg, #121A3B 0%, #0077B6 100%) !important;
-    color: white !important; font-weight: 700 !important; border-radius: 12px !important;
-    width: 100% !important; padding: 15px !important; text-transform: uppercase; letter-spacing: 1px;
+    background: linear-gradient(90deg, #0A1128 0%, #006699 100%) !important;
+    color: #FFFFFF !important; 
+    font-weight: 700 !important; 
+    border-radius: 8px !important;
+    width: 100% !important; 
+    padding: 15px !important; 
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+    border: none !important; /* Tira qualquer bordinha cinza que o Streamlit coloque */
+}}
+
+/* Essa é a linha mágica que obriga o texto de dentro a ficar branco! */
+.stButton > button * {{
+    color: #FFFFFF !important;
 }}
 div[data-baseweb="select"] > div, input {{ background-color: #FFFFFF !important; }}
 </style>
 <div class="custom-header">
     <img src="{logo_src}" class="logo-img">
-    <h2 style="margin-top: 15px; color: #121A3B; font-weight: 700;">Solicitação de Espaços</h2>
+    <h2 style="margin-top: -45px; color: #121A3B; font-weight: 600;">Solicitação de Espaços</h2>
     <p style="color: #64748b; font-weight: 600;">Selecione os horários disponíveis abaixo</p>
 </div>
 """, unsafe_allow_html=True)
@@ -96,7 +107,7 @@ try:
                 df_final = df_sala[df_sala["Data"] == data_escolhida]
                 horarios_disponiveis = df_final["Horario"].tolist()
                 
-                horarios_escolhidos = st.multiselect("Escolha os blocos de horário (pode selecionar vários):", horarios_disponiveis, placeholder="Selecione os horários...")
+                horarios_escolhidos = st.multiselect("Escolha os blocos de horário (você pode selecionar vários):", horarios_disponiveis, placeholder="Selecione os horários...")
                 
                 if horarios_escolhidos:
                     st.divider()
@@ -105,7 +116,7 @@ try:
                     with col1:
                         nome_solicitante = st.text_input("Nome Completo")
                     with col2:
-                        email_solicitante = st.text_input("E-mail profissional")
+                        email_solicitante = st.text_input("E-mail para receber confirmação")
                     
                     st.write("") # Espaço
                     if st.button("Confirmar Solicitação"):

@@ -54,6 +54,23 @@ def criar_evento_agenda(creds, resumo, descricao, data_str, horario_str):
         return False
 
 def renderizar_gestao_salas():
+    st.markdown("""
+    <style>
+    .stButton > button {
+        background: #005f8f !important;
+        color: #FFFFFF !important;
+        border-radius: 4px !important;
+        padding: 8px 10px !important; 
+        border: none !important;
+        font-weight: 600 !important;
+        letter-spacing: 0px !important;
+        height: auto !important; /* Força a altura a se adaptar ao texto */
+    }
+    .stButton > button * {
+        color: #FFFFFF !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
     st.header("Reserva de Salas")
     st.write("Controle a disponibilidade dos espaços do Hub Horizonte.")
     
@@ -66,7 +83,7 @@ def renderizar_gestao_salas():
         
         # --- ABA 1: CADASTRAR HORÁRIOS ---
         with tab_cadastro:
-            st.subheader("Adicionar horários em lote")
+            st.subheader("Adicionar horários")
             
             col1, col2, col3 = st.columns(3)
             with col1:
