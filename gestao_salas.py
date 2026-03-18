@@ -47,7 +47,7 @@ def criar_evento_agenda(creds, resumo, descricao, data_str, horario_str):
           },
         }
         
-        service.events().insert(calendarId='primary', body=event).execute()
+        service.events().insert(calendarId='c_ad2ee447ff7529defec5747464816aefa842dafdca5d03a6719ee29338eeb25a@group.calendar.google.com', body=event).execute()
         return True
     except Exception as e:
         st.error(f"Erro ao criar evento na agenda: {e}")
