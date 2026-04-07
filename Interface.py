@@ -244,9 +244,9 @@ def renderizar_acolhimento(is_pj=True):
             respostas_acolhimento["dor_principal_acolh"] = dor
             respostas_acolhimento["solucao_ofertada"] = solucao
 
-        # 2. MANDALA DE SOLUÇÕES
-        elif direcionamento == "Mandala de Soluções":
-            st.success("Mandala de Soluções - Conecte com o parceiro, agendando uma reunião de match para conhecer mais sobre o serviço")
+        # 2. PORTIFÓLIO DE SOLUÇÕES
+        elif direcionamento == "Portifólio de Soluções":
+            st.success("Portifólio de Soluções - Conecte com o parceiro, agendando uma reunião de match para conhecer mais sobre o serviço")
             col_dor, col_sol = st.columns(2)
             with col_dor:
                 dor = st.selectbox("Principal Dor identificada:", options=LISTA_DOR_PRINCIPAL, key="acolh_dor_principal", index=None)
