@@ -1096,7 +1096,7 @@ GDRIVE_CONFIG = {
 }
 
 # Listas Auxiliares
-LISTA_DIRECIONAMENTO = ["Eventos e Programas", "Portifólio de Soluções", "Trilha do Conhecimento", "Diagnóstico Completo", "Negociação de Nova Parceria"]
+LISTA_DIRECIONAMENTO = ["Eventos e Programas", "Portifólio de Soluções", "Trilha do Conhecimento", "Diagnóstico Completo", "Negociação de Nova Parceria", "Atendimento de construção personalizada" ]
 LISTA_DOR_PRINCIPAL = [
     "Atendimento ao Cliente: Agilidade e Estrutura de Atendimento",
     "Atendimento ao Cliente: Relacionamento, Fidelização e Pós-venda",
