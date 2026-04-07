@@ -290,6 +290,13 @@ def renderizar_acolhimento(is_pj=True):
             respostas_acolhimento["dor_principal_acolh"] = dor
             respostas_acolhimento["solucao_ofertada"] = "Negociação de Parceria"
 
+        # 6. ATENDIMENTO DE CONSTRUÇÃO PERSONALIZADA 
+        elif direcionamento == "Atendimento de construção personalizada":
+            st.success("Atendimento de construção personalizada - Direcione/agende com o Consultor do Núcleo de Operações do Horizonte")
+            dor = st.selectbox("Principal Dor identificada:", options=LISTA_DOR_PRINCIPAL, key="acolh_dor_principal", index=None)
+            respostas_acolhimento["dor_principal_acolh"] = dor
+            respostas_acolhimento["solucao_ofertada"] = "Atendimento de construção personalizada"
+
         st.write("**Observação / Agendamento:**")
         agendamento = st.text_input("\" Oferecer opções de data e horário ou fazer anotações sobre os próximos passos.\"", placeholder="Ex: Diagnóstico marcado para 20/03 às 14h", key="acolh_agendamento")
         respostas_acolhimento["agendamento"] = agendamento
