@@ -276,7 +276,7 @@ if escolha in ["Acolhimento", "Diagnóstico Inicial"]:
                 # A chave seletora inteligente para cada solução!
                 direcionamento_diag = st.selectbox(
                     "Direcionamento", 
-                    ["Nenhuma", "Eventos e Programas", "Mandala de Soluções", "Trilha do Conhecimento", "Negociação de Nova Parceria"],
+                    ["Nenhuma", "Eventos e Programas", "Portifólio de Soluções", "Trilha do Conhecimento", "Negociação de Nova Parceria"],
                     key=f"dir_diag_{i}",
                     index=0 # Começa no "Nenhuma" para esconder as perguntas
                 )
@@ -290,8 +290,8 @@ if escolha in ["Acolhimento", "Diagnóstico Inicial"]:
                         s_nome = st.text_input("Solução Ofertada (Campo Aberto):", key=f"s_nome_ev_{i}", placeholder="Ex: Inscrição no Bootcamp")
                         info = {"descricao": "Participação em evento ou programa parceiro.", "parceiro": "Hub Horizonte / Parceiros", "custo": "A consultar"}
                         
-                    # 2. MANDALA DE SOLUÇÕES
-                    elif direcionamento_diag == "Mandala de Soluções":
+                    # 2. PORTIFÓLIO DE SOLUÇÕES
+                    elif direcionamento_diag == "Portifólio de Soluções":
                         s_nome = st.selectbox("Solução Ofertada:", list(CATALOGO_MANDALA.keys()), key=f"s_nome_man_{i}", index=None)
                         if s_nome:
                             info_raw = CATALOGO_MANDALA[s_nome]
