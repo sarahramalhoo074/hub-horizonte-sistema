@@ -276,7 +276,7 @@ if escolha in ["Acolhimento", "Diagnóstico Inicial"]:
                 # A chave seletora inteligente para cada solução!
                 direcionamento_diag = st.selectbox(
                     "Direcionamento", 
-                    ["Nenhuma", "Eventos e Programas", "Portifólio de Soluções", "Trilha do Conhecimento", "Negociação de Nova Parceria"],
+                    ["Nenhuma", "Eventos e Programas", "Portifólio de Soluções", "Trilha do Conhecimento", "Negociação de Nova Parceria", "Atendimento de construção personalizada" ],
                     key=f"dir_diag_{i}",
                     index=0 # Começa no "Nenhuma" para esconder as perguntas
                 )
@@ -311,7 +311,11 @@ if escolha in ["Acolhimento", "Diagnóstico Inicial"]:
                         s_nome = st.text_input("Foco da Parceria (Campo Aberto):", key=f"s_nome_parc_{i}", placeholder="Ex: Buscar startup de logística")
                         info = {"descricao": "Prospecção e negociação de nova parceria estratégica para suprir gargalo.", "parceiro": "A definir", "custo": "A consultar"}
 
-                    # Se o consultor escolheu/digitou uma solução, abre as caixas finais
+                    # 5. # 6. ATENDIMENTO DE CONSTRUÇÃO PERSONALIZADA 
+                    elif direcionamento_diag == "Atendimento de construção personalizada":
+                        s_nome = st.text_input("Solução Ofertada (Campo Aberto):", key=f"s_nome_ev_{i}", placeholder="Ex: Inscrição no Bootcamp")
+                        info = {"descricao": "Participação em evento ou programa parceiro.", "parceiro": "Hub Horizonte / Parceiros", "custo": "A consultar"}
+    
                     # Se o consultor escolheu/digitou uma solução, abre as caixas finais
                     if s_nome:
                         s_motivo = st.text_area(f"Motivo da indicação", key=f"s_mot_{i}")
