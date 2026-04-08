@@ -163,8 +163,7 @@ def renderizar_acolhimento(is_pj=True):
         with st.expander(f"Área: {nome_area}"):
             st.write(f"**Pergunta de Reflexão:** {area['reflexao']}")
             
-            resp_cliente = st.text_area(f"Resposta do cliente - {nome_area}", key=f"resp_cli_{nome_area}")
-            obs_agente = st.text_area(f"Observações do agente - {nome_area}", key=f"obs_age_{nome_area}")
+            notas_consultor = st.text_area(f"Notas Internas do Consultor - {nome_area}", key=f"notas_cons_{nome_area}")
             
             # --- A MÁGICA DA SEPARAÇÃO ACONTECE AQUI ---
             if is_pj:
