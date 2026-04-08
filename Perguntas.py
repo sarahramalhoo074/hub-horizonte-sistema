@@ -1274,8 +1274,37 @@ CATALOGO_TRILHA = {
         "descricao": "Melhore a operação digital e a expansão de vendas aprendendo a integrar canais e automatizar processos.",
         "instituicao": "SEBRAE MG", "carga_horaria": "3 horas", "link": "https://sebraeplay.com.br/cursos/empreendedor-digital", "custo": "Gratuito"
     },
+    "Mínimo do Produto Viável - MVP": {
+        "descricao": "Aprenda conceitos essenciais de MVP, sua importância na validação de ideias, tipos de estratégias e ferramentas para o desenvolvimento prático de soluções.",
+        "instituicao": "SEBRAE", "carga_horaria": "2 horas", "link": "https://loja.sebrae.com.br/minimo-produto-viavel-mvp-1-372000101691", "custo": "Gratuito"
+    },
+    "Como definir o preço de venda": {
+        "descricao": "Aprenda a diferenciar custos e despesas, calcular margem de contribuição e ponto de equilíbrio, além de definir preços alinhados ao mercado.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "10 horas", "link": "https://loja.sebrae.com.br/como-definir-preco-de-venda-1-371440103446", "custo": "Gratuito"
+    },
+    "Série Multiplique seus Lucros": {
+        "descricao": "Aprenda fundamentos de gestão financeira, incluindo fluxo de caixa, formação de preços e estratégias para planejamento e controle de indicadores.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "2h 21min", "link": "https://sebraeplay.com.br/series/multiplique-seus-lucros", "custo": "Gratuito"
+    },
+    "Saia do Vermelho: Gestão Financeira Completa": {
+        "descricao": "Aprenda princípios de organização financeira, gestão de dívidas, capital de giro e estratégias para renegociação e saúde financeira do negócio.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "2h 29min", "link": "https://sebraeplay.com.br/series/saia-do-vermelho-gestao-financeira-completa", "custo": "Gratuito"
+    },
+    "Gestão Financeira": {
+        "descricao": "Práticas de gestão financeira para pequenos negócios, abordando separação de contas, fluxo de caixa, planejamento e formação de preços.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "10 horas", "link": "https://loja.sebrae.com.br/gest-o-financeira-1-372000026927", "custo": "Gratuito"
+    },
+    "Gestão em Serviços": {
+        "descricao": "Aprenda ferramentas de gestão e inovação em serviços, abordando precificação, marketing digital, design de serviços e experiência do cliente.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "3h 17min", "link": "https://sebraeplay.com.br/series/mais-servicos", "custo": "Gratuito"
+    },
+    "Recrutamento e seleção: como criar um time vencedor": {
+        "descricao": "Aprenda práticas essenciais de recrutamento e seleção, abordando desde a definição do perfil do candidato e criação de vagas até a condução de entrevistas e integração.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "5 horas", "link": "https://loja.sebrae.com.br/recrutamento-e-selec-o-como-criar-um-time-vencedor-1-372000028315", "custo": "Gratuito"
+    },
     "Gestão de Estoque: Mantendo o Estoque em Dia": {
         "descricao": "Aprenda fundamentos de controle, organização e codificação de produtos, além de técnicas como giro de estoque, sistema ABC e inventário.",
         "instituicao": "SEBRAE MG","carga_horaria": "3 horas", "link": "https://mg.loja.sebrae.com.br/mantendo-o-estoque-em-dia-1-372000027020","custo": "Gratuito"
     }
+    
 }
