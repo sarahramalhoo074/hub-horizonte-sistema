@@ -128,9 +128,9 @@ def renderizar_acolhimento(is_pj=True):
     # Mostra a escala de PJ se is_pj for True, senão mostra a de PF.
     if is_pj:
         st.markdown("""
-        <details style="background-color: #f7fff8; border: 1px solid #f7fff8; border-radius: 5px; padding: 10px; margin-bottom: 15px;">
+        <details style="background-color: #cafad0; border: 1px solid #cafad0; border-radius: 5px; padding: 10px; margin-bottom: 15px;">
             <summary style="font-weight: bold; cursor: pointer; color: #080808;">Escala de Avaliação (PJ - Demanda)</summary>
-            <ul style="margin-top: 10px; color: #1b5e20;">
+            <ul style="margin-top: 10px; color: #080808;">
                 <li><b>1 - Muito Baixa:</b> Confiança na área. Situação controlada e sem urgência.</li>
                 <li><b>2 - Baixa:</b> Oportunidade de melhoria, mas não é um impeditivo no momento.</li>
                 <li><b>3 - Média:</b> Desafios claros que já impactam o dia a dia. Merece atenção.</li>
@@ -141,9 +141,9 @@ def renderizar_acolhimento(is_pj=True):
         """, unsafe_allow_html=True)
     else:
         st.markdown("""
-        <details style="background-color: #f7fff8; border: 1px solid #f7fff8; border-radius: 5px; padding: 10px; margin-bottom: 15px;">
+        <details style="background-color: #cafad0; border: 1px solid #cafad0; border-radius: 5px; padding: 10px; margin-bottom: 15px;">
             <summary style="font-weight: bold; cursor: pointer; color: #080808;">Escala de Avaliação (PF - Interesse)</summary>
-            <ul style="margin-top: 10px; color: #1b5e20;">
+            <ul style="margin-top: 10px; color: #080808;">
                 <li><b>1 - Nenhum:</b> Tema não possui relação ou relevância para a realidade atual.</li>
                 <li><b>2 - Baixo:</b> Reconhece a importância, mas sem motivação para aprofundamento a curto prazo.</li>
                 <li><b>3 - Moderado:</b> Curiosidade e abertura para aprender, embora ainda não seja prioridade.</li>
