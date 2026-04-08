@@ -200,7 +200,6 @@ def gerar_ata_interna(dados, resultados, caminho_radar, nome_arquivo, modo="Diag
             pdf.ln(1)
             
             pdf.item("Resposta | Observações do Consultor", vals.get('notas_consultor', 'N/A'))
-            pdf.item("Observações do Agente", vals.get('observacoes_agente', 'N/A'))
             nota = vals.get('demanda', 0) if is_pj else vals.get('interesse', 0) # 1. Pega a nota certa dependendo se é PJ ou PF
             # 2. Transforma em número inteiro 
             try:
