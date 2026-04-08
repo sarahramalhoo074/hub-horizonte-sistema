@@ -276,7 +276,7 @@ if escolha in ["Acolhimento", "Diagnóstico Inicial"]:
                 # A chave seletora inteligente para cada solução!
                 direcionamento_diag = st.selectbox(
                     "Direcionamento", 
-                    ["Nenhuma", "Eventos e Programas", "Portifólio de Soluções", "Trilha do Conhecimento", "Negociação de Nova Parceria", "Atendimento de construção personalizada" ],
+                    ["Nenhuma", "Eventos e Programas", "Portifólio de Soluções", "Trilha do Conhecimento", "Negociação de Nova Parceria", "Atendimento | Construção Personalizada" ],
                     key=f"dir_diag_{i}",
                     index=0 # Começa no "Nenhuma" para esconder as perguntas
                 )
@@ -287,7 +287,7 @@ if escolha in ["Acolhimento", "Diagnóstico Inicial"]:
                     
                     # 1. EVENTOS E PROGRAMAS
                     if direcionamento_diag == "Eventos e Programas":
-                        s_nome = st.text_input("Solução Ofertada (Campo Aberto):", key=f"s_nome_ev_{i}", placeholder="Ex: Inscrição no Bootcamp")
+                        s_nome = st.text_input("Solução Ofertada (Campo Aberto):", key=f"s_nome_ev_{i}", placeholder="Ex: Inscrição no Evento | Worshop XXXX")
                         info = {"descricao": "Participação em evento ou programa parceiro.", "parceiro": "Hub Horizonte / Parceiros", "custo": "A consultar"}
                         
                     # 2. PORTIFÓLIO DE SOLUÇÕES
@@ -311,9 +311,9 @@ if escolha in ["Acolhimento", "Diagnóstico Inicial"]:
                         s_nome = st.text_input("Foco da Parceria (Campo Aberto):", key=f"s_nome_parc_{i}", placeholder="Ex: Buscar startup de logística")
                         info = {"descricao": "Prospecção e negociação de nova parceria estratégica para suprir gargalo.", "parceiro": "A definir", "custo": "A consultar"}
 
-                    # 5. # 6. ATENDIMENTO DE CONSTRUÇÃO PERSONALIZADA 
-                    elif direcionamento_diag == "Atendimento de construção personalizada":
-                        s_nome = st.text_input("Solução Ofertada (Campo Aberto):", key=f"s_nome_ev_{i}", placeholder="Ex: Inscrição no Bootcamp")
+                    # 5. # 6. ATENDIMENTO | CONSTRUÇÃO PERSONALIZADA 
+                    elif direcionamento_diag == "Atendimento | Construção Personalizada":
+                        s_nome = st.text_input("Solução Ofertada (Campo Aberto):", key=f"s_nome_ev_{i}", placeholder="Ex: Agendar construção de xxxx na sala de Imersão Criativa")
                         info = {"descricao": "Participação em evento ou programa parceiro.", "parceiro": "Hub Horizonte / Parceiros", "custo": "A consultar"}
     
                     # Se o consultor escolheu/digitou uma solução, abre as caixas finais
