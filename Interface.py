@@ -120,7 +120,7 @@ def renderizar_acolhimento(is_pj=True):
     respostas_acolhimento["canal_comunicacao"] = canal
     
     st.divider()
-    st.warning("🚨 TESTE: O código está lendo até aqui!")
+    
     # 4. Radar de Demandas
     st.subheader("2. Diagnóstico de Demandas")
     st.write(f"**Introdução ao Diagnóstico:** {ACOLHIMENTO_CONFIG['Radar de Demandas']['intro']}")
@@ -128,8 +128,8 @@ def renderizar_acolhimento(is_pj=True):
     # Mostra a escala de PJ se is_pj for True, senão mostra a de PF.
     if is_pj:
         st.markdown("""
-        <details style="background-color: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 5px; padding: 10px; margin-bottom: 15px;">
-            <summary style="font-weight: bold; cursor: pointer; color: #2e7d32;">Escala de Avaliação (PJ - Demanda)</summary>
+        <details style="background-color: #f7fff8; border: 1px solid #f7fff8; border-radius: 5px; padding: 10px; margin-bottom: 15px;">
+            <summary style="font-weight: bold; cursor: pointer; color: #080808;">Escala de Avaliação (PJ - Demanda)</summary>
             <ul style="margin-top: 10px; color: #1b5e20;">
                 <li><b>1 - Muito Baixa:</b> Confiança na área. Situação controlada e sem urgência.</li>
                 <li><b>2 - Baixa:</b> Oportunidade de melhoria, mas não é um impeditivo no momento.</li>
@@ -141,8 +141,8 @@ def renderizar_acolhimento(is_pj=True):
         """, unsafe_allow_html=True)
     else:
         st.markdown("""
-        <details style="background-color: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 5px; padding: 10px; margin-bottom: 15px;">
-            <summary style="font-weight: bold; cursor: pointer; color: #2e7d32;">Escala de Avaliação (PF - Interesse)</summary>
+        <details style="background-color: #f7fff8; border: 1px solid #f7fff8; border-radius: 5px; padding: 10px; margin-bottom: 15px;">
+            <summary style="font-weight: bold; cursor: pointer; color: #080808;">Escala de Avaliação (PF - Interesse)</summary>
             <ul style="margin-top: 10px; color: #1b5e20;">
                 <li><b>1 - Nenhum:</b> Tema não possui relação ou relevância para a realidade atual.</li>
                 <li><b>2 - Baixo:</b> Reconhece a importância, mas sem motivação para aprofundamento a curto prazo.</li>
