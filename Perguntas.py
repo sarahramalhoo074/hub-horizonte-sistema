@@ -1273,5 +1273,9 @@ CATALOGO_TRILHA = {
     "Empreendedor Digital: integrando e otimizando": {
         "descricao": "Melhore a operação digital e a expansão de vendas aprendendo a integrar canais e automatizar processos.",
         "instituicao": "SEBRAE MG", "carga_horaria": "3 horas", "link": "https://sebraeplay.com.br/cursos/empreendedor-digital", "custo": "Gratuito"
+    },
+    "Gestão de Estoque: Mantendo o Estoque em Dia": {
+        "descricao": "Aprenda fundamentos de controle, organização e codificação de produtos, além de técnicas como giro de estoque, sistema ABC e inventário.",
+        "instituicao": "SEBRAE MG","carga_horaria": "3 horas", "link": "https://mg.loja.sebrae.com.br/mantendo-o-estoque-em-dia-1-372000027020","custo": "Gratuito"
     }
 }
