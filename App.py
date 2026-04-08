@@ -40,7 +40,7 @@ def inicializar_estado():
     if 'dados_empresa' not in st.session_state:
         st.session_state['dados_empresa'] = {}
 
-st.set_page_config(page_title="Hub Horizonte", layout="wide")
+st.set_page_config(page_title="Horizonte", layout="wide")
 inicializar_estado()
 
 # --- ESTILO CSS ---
@@ -288,7 +288,7 @@ if escolha in ["Acolhimento", "Diagnóstico Inicial"]:
                     # 1. EVENTOS E PROGRAMAS
                     if direcionamento_diag == "Eventos e Programas":
                         s_nome = st.text_input("Solução Ofertada:", key=f"s_nome_ev_{i}", placeholder="Ex: Inscrição no Evento | Worshop XXXX")
-                        info = {"descricao": "Participação em evento ou programa parceiro.", "parceiro": "Hub Horizonte / Parceiros", "custo": "A consultar"}
+                        info = {"descricao": "Participação em evento ou programa parceiro.", "parceiro": "Horizonte / Parceiros", "custo": "A consultar"}
                         
                     # 2. PORTIFÓLIO DE SOLUÇÕES
                     elif direcionamento_diag == "Portifólio de Soluções":
@@ -314,7 +314,7 @@ if escolha in ["Acolhimento", "Diagnóstico Inicial"]:
                     # 5. # 6. ATENDIMENTO | CONSTRUÇÃO PERSONALIZADA 
                     elif direcionamento_diag == "Atendimento | Construção Personalizada":
                         s_nome = st.text_input("Solução Ofertada:", key=f"s_nome_ev_{i}", placeholder="Ex: Agendar construção de xx na sala de Imersão Criativa")
-                        info = {"descricao": "Participação em evento ou programa parceiro.", "parceiro": "Hub Horizonte / Parceiros", "custo": "A consultar"}
+                        info = {"descricao": "Atendimento | Construção Personalizada.", "parceiro": "Horizonte / Parceiros", "custo": "A consultar"}
     
                     # Se o consultor escolheu/digitou uma solução, abre as caixas finais
                     if s_nome:
