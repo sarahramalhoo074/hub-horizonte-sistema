@@ -1313,6 +1313,6 @@ CATALOGO_TRILHA = {
     "Financiamento para empresas: Como captar recursos": {
         "descricao": "Aprenda quando buscar recursos, como elaborar um plano de captação, as principais fontes de financiamento e o passo a passo para obter crédito ou investimento.",
         "instituicao": "SEBRAE MG", "carga_horaria": "2 horas", "link": "https://loja.sebrae.com.br/como-captar-recursos-para-o-seu-negocio-1-2550", "custo": "Gratuito"
-}
+    }
     
 }
