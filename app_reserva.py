@@ -16,7 +16,7 @@ if not os.path.exists('client_secret.json') and "client_secret" in st.secrets:
 # -------------------------------------------------------------------
 
 # --- CONFIGURAÇÃO DA PÁGINA E ESTILO ---
-st.set_page_config(page_title="Reserva de Salas - Hub Horizonte", layout="centered")
+st.set_page_config(page_title="Reserva de Salas -Horizonte", layout="centered")
 
 def get_base64_logo():
     for ext in ["png", "jpg", "jpeg"]:
@@ -145,7 +145,7 @@ try:
                                 
                                 if linhas_pedidos:
                                     aba_pedidos.append_rows(linhas_pedidos)
-                                    st.success(f" Ótimo, {nome_solicitante.split()[0]}! Sua solicitação foi enviada para o Hub Horizonte. Você receberá a confirmação no e-mail {email_solicitante} em breve.")
+                                    st.success(f" Ótimo, {nome_solicitante.split()[0]}! Sua solicitação foi enviada para o Horizonte. Você receberá a confirmação no e-mail {email_solicitante} em breve.")
                                     # Limpa a tela após 3 segundos (opcional, ele avisa que deu certo e para)
                                     
 except Exception as e:
