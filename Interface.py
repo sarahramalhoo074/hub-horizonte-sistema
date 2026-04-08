@@ -125,27 +125,33 @@ def renderizar_acolhimento(is_pj=True):
     st.subheader("2. Diagnóstico de Demandas")
     st.write(f"**Introdução ao Diagnóstico:** {ACOLHIMENTO_CONFIG['Radar de Demandas']['intro']}")
     
-    # --- INÍCIO DAS CAIXAS DE ESCALA ---
     # Mostra a escala de PJ se is_pj for True, senão mostra a de PF.
     if is_pj:
-        with st.expander("📌 Ver Escala de Avaliação (PJ - Demanda)"):
-            st.markdown("""
-            * **1 - Muito Baixa:** Confiança na área. Situação controlada e sem urgência.
-            * **2 - Baixa:** Oportunidade de melhoria, mas não é um impeditivo no momento.
-            * **3 - Média:** Desafios claros que já impactam o dia a dia. Merece atenção.
-            * **4 - Alta:** Problema recorrente com impactos negativos (tempo/dinheiro). Gargalo evidente.
-            * **5 - Crítica:** Obstáculo severo à sobrevivência do negócio. Exige solução imediata.
-            """)
+        st.markdown("""
+        <details style="background-color: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 5px; padding: 10px; margin-bottom: 15px;">
+            <summary style="font-weight: bold; cursor: pointer; color: #2e7d32;">Escala de Avaliação (PJ - Demanda)</summary>
+            <ul style="margin-top: 10px; color: #1b5e20;">
+                <li><b>1 - Muito Baixa:</b> Confiança na área. Situação controlada e sem urgência.</li>
+                <li><b>2 - Baixa:</b> Oportunidade de melhoria, mas não é um impeditivo no momento.</li>
+                <li><b>3 - Média:</b> Desafios claros que já impactam o dia a dia. Merece atenção.</li>
+                <li><b>4 - Alta:</b> Problema recorrente com impactos negativos (tempo/dinheiro). Gargalo evidente.</li>
+                <li><b>5 - Crítica:</b> Obstáculo severo à sobrevivência do negócio. Exige solução imediata.</li>
+            </ul>
+        </details>
+        """, unsafe_allow_html=True)
     else:
-        with st.expander("📌 Ver Escala de Avaliação (PF - Interesse)"):
-            st.markdown("""
-            * **1 - Nenhum:** Tema não possui relação ou relevância para a realidade atual.
-            * **2 - Baixo:** Reconhece a importância, mas sem motivação para aprofundamento a curto prazo.
-            * **3 - Moderado:** Curiosidade e abertura para aprender, embora ainda não seja prioridade.
-            * **4 - Alto:** Entusiasmo e motivação. Vontade clara de aprender e aplicar.
-            * **5 - Muito Alto:** Tema estratégico e essencial. Busca ativa, engajamento imediato.
-            """)
-    # --- FIM DAS CAIXAS DE ESCALA ---
+        st.markdown("""
+        <details style="background-color: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 5px; padding: 10px; margin-bottom: 15px;">
+            <summary style="font-weight: bold; cursor: pointer; color: #2e7d32;">Escala de Avaliação (PF - Interesse)</summary>
+            <ul style="margin-top: 10px; color: #1b5e20;">
+                <li><b>1 - Nenhum:</b> Tema não possui relação ou relevância para a realidade atual.</li>
+                <li><b>2 - Baixo:</b> Reconhece a importância, mas sem motivação para aprofundamento a curto prazo.</li>
+                <li><b>3 - Moderado:</b> Curiosidade e abertura para aprender, embora ainda não seja prioridade.</li>
+                <li><b>4 - Alto:</b> Entusiasmo e motivação. Vontade clara de aprender e aplicar.</li>
+                <li><b>5 - Muito Alto:</b> Tema estratégico e essencial. Busca ativa, engajamento imediato.</li>
+            </ul>
+        </details>
+        """, unsafe_allow_html=True)
 
     radar_data = {}
     areas = ACOLHIMENTO_CONFIG["Radar de Demandas"]["areas"]
