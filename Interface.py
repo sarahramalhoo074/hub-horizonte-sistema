@@ -120,7 +120,7 @@ def renderizar_acolhimento(is_pj=True):
     respostas_acolhimento["canal_comunicacao"] = canal
     
     st.divider()
-    
+    st.warning("🚨 TESTE: O código está lendo até aqui!")
     # 4. Radar de Demandas
     st.subheader("2. Diagnóstico de Demandas")
     st.write(f"**Introdução ao Diagnóstico:** {ACOLHIMENTO_CONFIG['Radar de Demandas']['intro']}")
