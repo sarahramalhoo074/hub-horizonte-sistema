@@ -287,7 +287,7 @@ if escolha in ["Acolhimento", "Diagnóstico Inicial"]:
                     
                     # 1. EVENTOS E PROGRAMAS
                     if direcionamento_diag == "Eventos e Programas":
-                        s_nome = st.text_input("Solução Ofertada (Campo Aberto):", key=f"s_nome_ev_{i}", placeholder="Ex: Inscrição no Evento | Worshop XXXX")
+                        s_nome = st.text_input("Solução Ofertada:", key=f"s_nome_ev_{i}", placeholder="Ex: Inscrição no Evento | Worshop XXXX")
                         info = {"descricao": "Participação em evento ou programa parceiro.", "parceiro": "Hub Horizonte / Parceiros", "custo": "A consultar"}
                         
                     # 2. PORTIFÓLIO DE SOLUÇÕES
@@ -308,12 +308,12 @@ if escolha in ["Acolhimento", "Diagnóstico Inicial"]:
                             
                     # 4. NEGOCIAÇÃO DE NOVA PARCERIA
                     elif direcionamento_diag == "Negociação de Nova Parceria":
-                        s_nome = st.text_input("Foco da Parceria (Campo Aberto):", key=f"s_nome_parc_{i}", placeholder="Ex: Buscar startup de logística")
+                        s_nome = st.text_input("Foco da Parceria:", key=f"s_nome_parc_{i}", placeholder="Ex: Buscar startup de logística")
                         info = {"descricao": "Prospecção e negociação de nova parceria estratégica para suprir gargalo.", "parceiro": "A definir", "custo": "A consultar"}
 
                     # 5. # 6. ATENDIMENTO | CONSTRUÇÃO PERSONALIZADA 
                     elif direcionamento_diag == "Atendimento | Construção Personalizada":
-                        s_nome = st.text_input("Solução Ofertada (Campo Aberto):", key=f"s_nome_ev_{i}", placeholder="Ex: Agendar construção de xxxx na sala de Imersão Criativa")
+                        s_nome = st.text_input("Solução Ofertada:", key=f"s_nome_ev_{i}", placeholder="Ex: Agendar construção de xx na sala de Imersão Criativa")
                         info = {"descricao": "Participação em evento ou programa parceiro.", "parceiro": "Hub Horizonte / Parceiros", "custo": "A consultar"}
     
                     # Se o consultor escolheu/digitou uma solução, abre as caixas finais
