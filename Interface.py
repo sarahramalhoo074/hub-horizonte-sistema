@@ -128,7 +128,7 @@ def renderizar_acolhimento(is_pj=True):
     # Mostra a escala de PJ se is_pj for True, senão mostra a de PF.
     if is_pj:
         st.markdown("""
-        <details style="background-color: #d7fcdb; border: 1px solid #88bd8e; border-radius: 5px; padding: 10px; margin-bottom: 15px;">
+        <details style="background-color: #dcdbff; border: 2px solid #2c2b82; border-radius: 5px; padding: 10px; margin-bottom: 15px;">
             <summary style="font-weight: bold; cursor: pointer; color: #080808;">Escala de Avaliação (PJ - Demanda)</summary>
             <ul style="margin-top: 10px; color: #080808;">
                 <li><b>1 - Muito Baixa:</b> Confiança na área. Situação controlada e sem urgência.</li>
@@ -141,7 +141,7 @@ def renderizar_acolhimento(is_pj=True):
         """, unsafe_allow_html=True)
     else:
         st.markdown("""
-        <details style="background-color: #d7fcdb; border: 1px solid #88bd8e; border-radius: 5px; padding: 10px; margin-bottom: 15px;">
+        <details style="background-color: #dcdbff; border: 2px solid #2c2b82; border-radius: 5px; padding: 10px; margin-bottom: 15px;">
             <summary style="font-weight: bold; cursor: pointer; color: #080808;">Escala de Avaliação (PF - Interesse)</summary>
             <ul style="margin-top: 10px; color: #080808;">
                 <li><b>1 - Nenhum:</b> Tema não possui relação ou relevância para a realidade atual.</li>
