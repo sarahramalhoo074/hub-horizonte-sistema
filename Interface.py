@@ -189,8 +189,7 @@ def renderizar_acolhimento(is_pj=True):
             
             radar_data[nome_area] = {
                 "abreviacao": area["abreviacao"],
-                "resposta_cliente": resp_cliente,
-                "observacoes_agente": obs_agente,
+                "notas_consultor": notas_consultor,
                 "nota_radar": valor_radar, # <--  montar o gráfico!
                 "demanda": valor_radar if is_pj else 0,
                 "interesse": valor_radar if not is_pj else 0
