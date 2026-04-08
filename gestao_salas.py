@@ -72,7 +72,7 @@ def renderizar_gestao_salas():
     </style>
     """, unsafe_allow_html=True)
     st.header("Reserva de Salas")
-    st.write("Controle a disponibilidade dos espaços do Hub Horizonte.")
+    st.write("Controle a disponibilidade dos espaços do Horizonte.")
     
     try:
         planilha, creds = conectar_planilha()
@@ -145,7 +145,7 @@ def renderizar_gestao_salas():
                                 if st.button(f"Aprovar", key=f"btn_aprovar_{ped['linha_planilha']}"):
                                     with st.spinner("Criando evento na agenda..."):
                                         resumo = f"Reserva {ped['Sala']} - {ped['Nome']}"
-                                        descricao = f"Reserva solicitada via Sistema Hub Horizonte.\nContato: {ped['Email']}"
+                                        descricao = f"Reserva solicitada via Sistema Horizonte.\nContato: {ped['Email']}"
                                         
                                         sucesso = criar_evento_agenda(creds, resumo, descricao, ped['Data'], ped['Horario'])
                                         
