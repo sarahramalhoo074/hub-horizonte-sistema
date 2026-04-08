@@ -312,7 +312,7 @@ def renderizar_acolhimento(is_pj=True):
     
     # 7. Relatório Final
     st.subheader("6. Relatório Final: Principais pontos observados no acolhimento")
-    relatorio_final = st.text_area("Principais pontos observados no acolhimento (Campo Aberto)", key="acolh_relatorio_final")
+    relatorio_final = st.text_area("Principais pontos observados no acolhimento", key="acolh_relatorio_final")
     respostas_acolhimento["relatorio_final"] = relatorio_final
         
     return respostas_acolhimento
