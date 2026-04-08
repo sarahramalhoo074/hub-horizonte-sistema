@@ -1305,6 +1305,14 @@ CATALOGO_TRILHA = {
     "Gestão de Estoque: Mantendo o Estoque em Dia": {
         "descricao": "Aprenda fundamentos de controle, organização e codificação de produtos, além de técnicas como giro de estoque, sistema ABC e inventário.",
         "instituicao": "SEBRAE MG","carga_horaria": "3 horas", "link": "https://mg.loja.sebrae.com.br/mantendo-o-estoque-em-dia-1-372000027020","custo": "Gratuito"
-    }
+    },
+    "Como comprar bem e de bons fornecedores": {
+        "descricao": "Aprenda a gestão estratégica de compras e fornecedores, técnicas de negociação e como equilibrar estoques para otimizar o capital de giro.",
+        "instituicao": "SEBRAE MG","carga_horaria": "2 horas", "link": "https://loja.sebrae.com.br/como-comprar-bem-e-de-bons-fornecedores-1-372000017779", "custo": "Gratuito"
+    },
+    "Financiamento para empresas: Como captar recursos": {
+        "descricao": "Aprenda quando buscar recursos, como elaborar um plano de captação, as principais fontes de financiamento e o passo a passo para obter crédito ou investimento.",
+        "instituicao": "SEBRAE MG", "carga_horaria": "2 horas", "link": "https://loja.sebrae.com.br/como-captar-recursos-para-o-seu-negocio-1-2550", "custo": "Gratuito"
+}
     
 }
