@@ -124,7 +124,26 @@ def renderizar_acolhimento(is_pj=True):
     # 4. Radar de Demandas
     st.subheader("2. Diagnóstico de Demandas")
     st.write(f"**Introdução ao Diagnóstico:** {ACOLHIMENTO_CONFIG['Radar de Demandas']['intro']}")
-    
+    with st.expander("Escala de Avaliação: PJ"):
+    st.markdown("""
+    **Nível de Demanda:**
+    * **1 - Muito Baixa:** Confiança na área. Situação controlada e sem urgência.
+    * **2 - Baixa:** Oportunidade de melhoria, mas não é um impeditivo no momento.
+    * **3 - Média:** Desafios claros que já impactam o dia a dia. Merece atenção.
+    * **4 - Alta:** Problema recorrente com impactos negativos (tempo/dinheiro). Gargalo evidente.
+    * **5 - Crítica:** Obstáculo severo à sobrevivência do negócio. Gera sobrecarga e exige solução imediata.
+    """)
+
+with st.expander("Escala de Avaliação: PF"):
+    st.markdown("""
+    **Nível de Interesse:**
+    * **1 - Nenhum:** Tema não possui relação ou relevância para a realidade atual.
+    * **2 - Baixo:** Reconhece a importância, mas sem motivação para aprofundamento a curto prazo.
+    * **3 - Moderado:** Curiosidade e abertura para aprender, embora ainda não seja prioridade.
+    * **4 - Alto:** Entusiasmo e motivação. Vontade clara de aprender, se capacitar e aplicar.
+    * **5 - Muito Alto:** Tema estratégico e essencial. Busca ativa, engajamento prático e imediato.
+    """)
+
     radar_data = {}
     areas = ACOLHIMENTO_CONFIG["Radar de Demandas"]["areas"]
     escala_demanda = ACOLHIMENTO_CONFIG["Radar de Demandas"]["escala_demanda"]
