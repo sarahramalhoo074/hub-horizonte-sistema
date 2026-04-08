@@ -40,7 +40,7 @@ class PDF_Horizonte(FPDF):
         self.set_font("Arial", "B", 10)
         self.set_y(15)
         # OBRIGATÓRIO USAR CELL: multi_cell no header causa quebra do layout se a página virar
-        self.cell(0, 10, "HUB HORIZONTE", border=0, align="R")
+        self.cell(0, 10, "HORIZONTE", border=0, align="R")
         self.ln(13)
         self.line(30, 32, 190, 32) # Linha horizontal de separação
         self.ln(5)
