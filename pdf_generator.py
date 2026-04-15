@@ -107,7 +107,7 @@ def gerar_ata_interna(dados, resultados, caminho_radar, nome_arquivo, modo="Diag
     titulo_doc = "ATA DE DIAGNÓSTICO" if modo == "Diagnóstico Inicial" else "ATA DE ACOLHIMENTO"
     
     pdf.set_font("Arial", "B", 10)
-    pdf.cell(0, 10, limpar_texto(f"{titulo_doc} - {empresa.upper()}"), border=0, ln=True, align="C")
+    pdf.cell(0, 10, limpar_texto(f"{titulo_doc} | {empresa.upper()}"), border=0, ln=True, align="C")
     pdf.ln(2)
 
     # É PJ OU PF?
@@ -306,10 +306,10 @@ def gerar_plano_cliente(dados, resultados, caminho_radar, nome_arquivo, modo="Di
     pdf.add_page()
     
     empresa = str(dados.get("empresa", "Empresa"))
-    titulo_doc = "PLANO DE AÇÃO DIAGNÓSTICO" if modo == "Diagnóstico Inicial" else "PLANO DE AÇÃO - ACOLHIMENTO"
+    titulo_doc = "PLANO DE AÇÃO | DIAGNÓSTICO" if modo == "Diagnóstico Inicial" else "PLANO DE AÇÃO | ACOLHIMENTO"
     
     pdf.set_font("Arial", "B", 10)
-    pdf.cell(0, 10, limpar_texto(f"{titulo_doc} - {empresa.upper()}"), border=0, ln=True, align="C")
+    pdf.cell(0, 10, limpar_texto(f"{titulo_doc} | {empresa.upper()}"), border=0, ln=True, align="C")
     pdf.ln(2)
 
     documento = dados.get('cnpj', '')
