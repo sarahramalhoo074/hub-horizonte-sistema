@@ -40,7 +40,6 @@ class PDF_Horizonte(FPDF):
         self.set_font("Arial", "B", 10)
         self.set_y(15)
         # OBRIGATÓRIO USAR CELL: multi_cell no header causa quebra do layout se a página virar
-        self.cell(0, 10, "HORIZONTE", border=0, align="R")
         self.ln(13)
         self.line(30, 32, 190, 32) # Linha horizontal de separação
         self.ln(5)
@@ -54,7 +53,7 @@ class PDF_Horizonte(FPDF):
 
     def secao(self, titulo):
         self.ln(4)
-        self.set_font("Arial", "B", 11)
+        self.set_font("Arial", "B", 10)
         self.set_fill_color(240, 240, 240)
         # Textos curtos de 1 linha: usar cell
         self.cell(0, 8, limpar_texto(f" {titulo}"), border=0, ln=True, align="L", fill=True)
@@ -107,7 +106,7 @@ def gerar_ata_interna(dados, resultados, caminho_radar, nome_arquivo, modo="Diag
     empresa = str(dados.get("empresa", "Empresa"))
     titulo_doc = "ATA DE DIAGNÓSTICO" if modo == "Diagnóstico Inicial" else "ATA DE ACOLHIMENTO"
     
-    pdf.set_font("Arial", "B", 14)
+    pdf.set_font("Arial", "B", 10)
     pdf.cell(0, 10, limpar_texto(f"{titulo_doc} - {empresa.upper()}"), border=0, ln=True, align="C")
     pdf.ln(2)
 
@@ -309,7 +308,7 @@ def gerar_plano_cliente(dados, resultados, caminho_radar, nome_arquivo, modo="Di
     empresa = str(dados.get("empresa", "Empresa"))
     titulo_doc = "PLANO DE AÇÃO DIAGNÓSTICO" if modo == "Diagnóstico Inicial" else "PLANO DE AÇÃO - ACOLHIMENTO"
     
-    pdf.set_font("Arial", "B", 14)
+    pdf.set_font("Arial", "B", 10)
     pdf.cell(0, 10, limpar_texto(f"{titulo_doc} - {empresa.upper()}"), border=0, ln=True, align="C")
     pdf.ln(2)
 
