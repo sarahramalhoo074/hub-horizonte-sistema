@@ -1172,7 +1172,7 @@ CATALOGO_TRILHA = {
     },
     "Novo Marketing de Relacionamento": {
         "descricao": "Fortaleça a relação com clientes mapeando a jornada de compra e criando experiências marcantes e duradouras.",
-        "instituicao": "SEBRAE MG", "carga_horaria": "4 horas", "link": "https://sebraeplay.com.br/cursos/novo-marketing-relacionamento", "custo": "Gratuito"
+        "instituicao": "SEBRAE MG", "carga_horaria": "4 horas", "link": "https://sebraeplay.com.br/cursos/novo-marketing-de-relacionamento", "custo": "Gratuito"
     },
     "Impulsionamento de Vendas Digitais": {
         "descricao": "Escale resultados impulsionando vendas em canais digitais e marketplaces. Entenda o consumidor e estratégias de conversão.",
