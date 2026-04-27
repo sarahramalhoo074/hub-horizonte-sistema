@@ -1122,7 +1122,7 @@ LISTA_DOR_PRINCIPAL = [
     "Concorrência e Diferenciais: Análise e Posicionamento de Mercado"
 ]
 LISTA_ESTADOS = ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"]
-LISTA_SETORES = ["Moda  e Acessórios", "Pet", "Gastronomia",  "Papelaria", "Otica",  "Beleza e Cuidados Pessoais", "Material de Construção"]
+LISTA_SETORES = ["Moda  e Acessórios", "Pet", "Gastronomia",  "Papelaria", "Otica",  "Beleza e Cuidados Pessoais", "Material de Construção", "Serviços"]
 LOGO_URL = "https://exemplo.com/logo.png"
 
 
